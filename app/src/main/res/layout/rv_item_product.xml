@@ -22,6 +22,7 @@
             tools:ignore="UseCompoundDrawables,UselessParent">
 
             <TextView
+                android:id="@+id/tv_product_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 tools:text="Ciggarete Paper"
@@ -31,10 +32,9 @@
                 android:textSize="18sp"/>
 
             <ImageView
+                android:id="@+id/img_option"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginEnd="@dimen/dip_8"
                 android:src="@drawable/ic_option"
                 android:contentDescription="@string/icon_option" />
 
@@ -42,6 +42,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tv_code_product"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="Kode: M1232"

@@ -39,7 +39,13 @@
     <string name="icon_akun">icon akun</string>
     <string name="akun">Akun</string>
     <string name="icon_back">icon back</string>
-    <string name="produk">Produk</string>
     <string name="tambah">Tambah</string>
     <string name="icon_option">icon option</string>
+    <string name="tambah_product">Tambah Produk</string>
+    <string name="illustrasi_tambah_produk">illustrasi tambah produk</string>
+    <string name="nama_produk">Nama Produk</string>
+    <string name="kode_produk">Kode Produk</string>
+    <string name="tambah_produk">Tambah Produk</string>
+    <string name="edit_produk">Edit Produk</string>
+    <string name="edit_produk">Edit Produk</string>
 </resources>

@@ -3,12 +3,117 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".home.product.EditProductFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/dip_16"
+            tools:ignore="UselessParent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                tools:ignore="UseCompoundDrawables,UselessParent">
+                <ImageView
+                    android:id="@+id/back_button_edit_product"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:src="@drawable/ic_back"
+                    android:contentDescription="@string/icon_back" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/edit_produk"
+                    android:layout_marginStart="@dimen/dip_16"
+                    style="@style/TextRegularPrimary"
+                    android:textSize="22sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/dip_8"
+                android:gravity="center_horizontal">
+
+                <ImageView
+                    android:layout_width="250dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="@dimen/dip_40"
+                    android:src="@drawable/illustration_edit_product"
+                    android:contentDescription="@string/illustrasi_tambah_produk" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_layout_edit_product_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/nama_produk"
+                    app:endIconMode="clear_text"
+                    android:layout_marginHorizontal="@dimen/dip_20"
+                    android:layout_marginTop="@dimen/dip_20"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    style="@style/TextInputLayout.OutlineBox.CustomFont">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_edit_product_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:lines="1"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_layout_edit_product_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/kode_produk"
+                    app:endIconMode="clear_text"
+                    android:layout_marginHorizontal="@dimen/dip_20"
+                    android:layout_marginTop="@dimen/dip_20"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    style="@style/TextInputLayout.OutlineBox.CustomFont">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edt_edit_product_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:lines="1"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/btn_edit_product"
+                    android:layout_marginTop="@dimen/dip_40"
+                    android:layout_marginHorizontal="@dimen/dip_20"
+                    android:text="@string/edit_produk"
+                    style="@style/Button"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
 
 </FrameLayout>
