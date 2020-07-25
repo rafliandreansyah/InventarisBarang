@@ -48,4 +48,6 @@
     <string name="tambah_produk">Tambah Produk</string>
     <string name="edit_produk">Edit Produk</string>
     <string name="edit_produk">Edit Produk</string>
+    <string name="detail_produk">Detail Produk</string>
+    <string name="produk_item">Produk Item</string>
 </resources>
