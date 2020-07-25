@@ -50,4 +50,11 @@
     <string name="edit_produk">Edit Produk</string>
     <string name="detail_produk">Detail Produk</string>
     <string name="produk_item">Produk Item</string>
+    <string name="image_item_product">image item product</string>
+    <string name="tambah_produk_item">Tambah Produk Item</string>
+    <string name="btn_add_foto">btn add foto</string>
+    <string name="nama_produk_item">Nama Produk Item</string>
+    <string name="jumlah">Jumlah</string>
+    <string name="tambah_produk_item">Tambah Produk Item</string>
+    <string name="edit_produk_item">Edit Produk Item</string>
 </resources>

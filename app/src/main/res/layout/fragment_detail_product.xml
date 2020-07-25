@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".home.product.DetailProductFragment">
 
     <LinearLayout
@@ -86,10 +87,21 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/dip_16"/>
+            android:layout_marginTop="@dimen/dip_16"
+            tools:listitem="@layout/list_item_product"/>
 
     </LinearLayout>
 
-
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/btn_add_item_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dip_16"
+        android:layout_gravity="bottom|end"
+        android:backgroundTint="@color/colorAccent"
+        app:icon="@drawable/ic_add"
+        android:text="@string/tambah"
+        app:iconTint="@color/colorWhite"
+        style="@style/TextRegularPrimaryWhite"/>
 
 </FrameLayout>

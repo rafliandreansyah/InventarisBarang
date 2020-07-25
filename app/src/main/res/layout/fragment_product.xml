@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="@dimen/dip_20"
-            tools:listitem="@layout/rv_item_product"/>
+            tools:listitem="@layout/list_product"/>
 
     </LinearLayout>
     
