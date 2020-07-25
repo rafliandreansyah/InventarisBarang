@@ -108,7 +108,7 @@
                 android:id="@+id/tv_forgot_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
+                android:textSize="14sp"
                 android:text="@string/lupa_password"
                 style="@style/TextLightPrimary"
                 android:layout_marginTop="@dimen/dip_8"
