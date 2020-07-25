@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/auth_navigation"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_navigation"
+    app:startDestination="@id/loginFragment">
 
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.azhara.inventarisbarang.auth.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.azhara.inventarisbarang.auth.register.RegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
+    <fragment
+        android:id="@+id/resetFragment"
+        android:name="com.azhara.inventarisbarang.auth.resetpassword.ResetFragment"
+        android:label="fragment_reset"
+        tools:layout="@layout/fragment_reset" />
+    <fragment
+        android:id="@+id/registerSuccessFragment"
+        android:name="com.azhara.inventarisbarang.auth.register.RegisterSuccessFragment"
+        android:label="fragment_register_success"
+        tools:layout="@layout/fragment_register_success" />
+    <fragment
+        android:id="@+id/checkEmailFragment"
+        android:name="com.azhara.inventarisbarang.auth.resetpassword.CheckEmailFragment"
+        android:label="fragment_check_email"
+        tools:layout="@layout/fragment_check_email" />
 </navigation>
