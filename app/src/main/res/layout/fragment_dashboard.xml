@@ -21,7 +21,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="22sp"
                 android:text="@string/dashboard"
                 style="@style/TextRegularPrimary"
                 android:layout_marginStart="@dimen/dip_30"/>
@@ -43,7 +43,7 @@
                     android:layout_height="125dp"
                     android:elevation="1dp"
                     android:layout_marginTop="@dimen/dip_20"
-                    android:background="@color/colorWhite">
+                    android:backgroundTint="@color/colorWhite">
                     
                     <LinearLayout
                         android:layout_width="match_parent"

@@ -38,4 +38,8 @@
     <string name="laporan">Laporan</string>
     <string name="icon_akun">icon akun</string>
     <string name="akun">Akun</string>
+    <string name="icon_back">icon back</string>
+    <string name="produk">Produk</string>
+    <string name="tambah">Tambah</string>
+    <string name="icon_option">icon option</string>
 </resources>
