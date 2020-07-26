@@ -62,4 +62,11 @@
         </LinearLayout>
         
     </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/loading_reset_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="invisible"/>
 </FrameLayout>

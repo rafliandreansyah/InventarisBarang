@@ -10,6 +10,7 @@ class AuthViewModel : ViewModel(){
 
     private val auth = FirebaseAuth.getInstance()
     private val loginState = MutableLiveData<Boolean>()
+    private val resetState = MutableLiveData<Boolean>()
     private val tag = AuthViewModel::class.java.simpleName
     var loginMessage: String? = null
 
@@ -26,5 +27,15 @@ class AuthViewModel : ViewModel(){
     }
 
     fun loginState(): LiveData<Boolean> = loginState
+
+    fun resetPassword(email: String?){
+        auth.sendPasswordResetEmail("$email").addOnCompleteListener { task ->
+            if (task.isSuccessful){
+                resetState.postValue(true)
+            }
+        }
+    }
+
+    fun resetState(): LiveData<Boolean> = resetState
 }
 

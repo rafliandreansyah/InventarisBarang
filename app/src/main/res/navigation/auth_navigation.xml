@@ -54,6 +54,8 @@
         tools:layout="@layout/fragment_check_email" >
         <action
             android:id="@+id/action_navigation_check_email_fragment_to_navigation_login_fragment"
-            app:destination="@id/navigation_login_fragment" />
+            app:destination="@id/navigation_login_fragment"
+            app:popUpTo="@id/navigation_login_fragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
