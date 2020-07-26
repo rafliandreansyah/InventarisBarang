@@ -32,14 +32,11 @@
     <string name="cv_bangkit_jayaa">CV Bangkit Jayaa</string>
     <string name="icon_product">icon product</string>
     <string name="produk">Produk</string>
-    <string name="barang">Barang</string>
     <string name="icon_box">icon box</string>
     <string name="icon_report">icon report</string>
-    <string name="laporan">Laporan</string>
     <string name="icon_akun">icon akun</string>
     <string name="akun">Akun</string>
     <string name="icon_back">icon back</string>
-    <string name="tambah">Tambah</string>
     <string name="icon_option">icon option</string>
     <string name="tambah_product">Tambah Produk</string>
     <string name="illustrasi_tambah_produk">illustrasi tambah produk</string>
@@ -60,10 +57,8 @@
     <string name="keluar">Keluar</string>
     <string name="ganti_password">Ganti Password</string>
     <string name="edit_profil">Edit Profil</string>
-    <string name="edit_profil">Edit Profil</string>
     <string name="telepon">Telepon</string>
     <string name="edit">Edit</string>
-    <string name="ganti_password">Ganti Password</string>
     <string name="illustrasi_ganti_password">illustrasi ganti password</string>
     <string name="password_lama">Password Lama</string>
     <string name="password_baru">Password Baru</string>
@@ -74,7 +69,6 @@
     <string name="illustrasi_barang_keluar">illustrasi barang keluar</string>
     <string name="kurangi">Kurangi</string>
     <string name="jumlah_item">Jumlah item</string>
-    <string name="barang_masuk">Barang Masuk</string>
     <string name="illustrasi_barang_masuk">illustrasi barang masuk</string>
     <string name="tambah">Tambah</string>
     <string name="laporan">Laporan</string>

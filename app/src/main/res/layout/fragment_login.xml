@@ -90,7 +90,7 @@
                     android:hint="@string/password"
                     app:boxStrokeColor="@color/colorPrimary"
                     android:layout_marginTop="@dimen/dip_20"
-                    app:endIconMode="clear_text"
+                    app:endIconMode="password_toggle"
                     style="@style/TextInputLayout.OutlineBox.CustomFont">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -156,7 +156,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/btn_register"
+                android:id="@+id/btn_to_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/daftar"
@@ -165,4 +165,11 @@
                 style="@style/Button"/>
         </LinearLayout>
     </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/loading_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="invisible"/>
 </FrameLayout>
