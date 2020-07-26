@@ -46,7 +46,7 @@
                         android:layout_below="@+id/tv_selamat"
                         style="@style/TextRegularPrimary" />
                 </RelativeLayout>
-                
+
                 <ImageView
                     android:layout_width="200dp"
                     android:layout_height="150dp"
@@ -130,7 +130,7 @@
                 android:weightSum="7"
                 android:layout_marginHorizontal="@dimen/dip_20"
                 android:layout_marginVertical="@dimen/dip_16">
-                
+
                 <View
                     android:layout_width="0dp"
                     android:layout_height="1dp"

@@ -220,7 +220,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/akun"
+                                android:text="@string/profile"
                                 style="@style/TextBoldWhite"
                                 android:textSize="16sp"
                                 android:layout_marginTop="@dimen/dip_16"/>

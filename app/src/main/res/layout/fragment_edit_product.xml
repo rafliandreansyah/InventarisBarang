@@ -8,9 +8,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:ignore="UselessParent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,65 +51,91 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="@dimen/dip_8"
+                android:layout_marginTop="@dimen/dip_40"
                 android:gravity="center_horizontal">
 
-                <ImageView
-                    android:layout_width="250dp"
-                    android:layout_height="200dp"
-                    android:layout_marginTop="@dimen/dip_40"
-                    android:src="@drawable/illustration_edit_product"
-                    android:contentDescription="@string/illustrasi_tambah_produk" />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:ignore="UselessParent">
+
+                    <com.github.florent37.shapeofview.shapes.RoundRectView
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:elevation="4dp"
+                        app:shape_roundRect_bottomLeftRadius="4dp"
+                        app:shape_roundRect_bottomRightRadius="4dp"
+                        app:shape_roundRect_topLeftRadius="4dp"
+                        app:shape_roundRect_topRightRadius="4dp">
+
+                        <ImageView
+                            android:id="@+id/img_edit_product_item"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            tools:src="@color/colorAccent"
+                            android:contentDescription="@string/produk_item" />
+
+                    </com.github.florent37.shapeofview.shapes.RoundRectView>
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/fab_choose_pic_edit_product_item"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/btn_add_foto"
+                        app:fabSize="mini"
+                        android:backgroundTint="@color/colorAccent"
+                        app:tint="@color/colorWhite"
+                        app:srcCompat="@drawable/ic_add"/>
+
+                </FrameLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/input_layout_edit_product_name"
+                    android:id="@+id/input_layout_edit_name_product_item"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/nama_produk"
+                    android:hint="@string/nama_produk_item"
                     app:endIconMode="clear_text"
-                    android:layout_marginHorizontal="@dimen/dip_20"
-                    android:layout_marginTop="@dimen/dip_20"
                     app:boxStrokeColor="@color/colorPrimary"
+                    android:layout_marginHorizontal="@dimen/dip_20"
+                    android:layout_marginTop="@dimen/dip_40"
                     style="@style/TextInputLayout.OutlineBox.CustomFont">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edt_edit_product_name"
+                        android:id="@+id/edt_edit_name_product"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
-                        android:lines="1"
-                        />
+                        android:lines="1" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/input_layout_edit_product_code"
+                    android:id="@+id/input_layout_edit_number_product_item"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/kode_produk"
+                    android:hint="@string/jumlah"
                     app:endIconMode="clear_text"
+                    app:boxStrokeColor="@color/colorPrimary"
                     android:layout_marginHorizontal="@dimen/dip_20"
                     android:layout_marginTop="@dimen/dip_20"
-                    app:boxStrokeColor="@color/colorPrimary"
                     style="@style/TextInputLayout.OutlineBox.CustomFont">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edt_edit_product_code"
+                        android:id="@+id/edt_edit_number_product"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:lines="1"
-                        />
+                        android:inputType="number"
+                        android:lines="1" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
                     android:id="@+id/btn_edit_product"
-                    android:layout_marginTop="@dimen/dip_40"
+                    android:layout_marginTop="@dimen/dip_30"
                     android:layout_marginHorizontal="@dimen/dip_20"
                     android:text="@string/edit_produk"
                     style="@style/Button"/>
-
             </LinearLayout>
 
         </ScrollView>

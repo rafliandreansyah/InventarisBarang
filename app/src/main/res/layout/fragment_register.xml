@@ -103,6 +103,26 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_layout_phone_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/telepon"
+                app:endIconMode="clear_text"
+                app:boxStrokeColor="@color/colorPrimary"
+                android:layout_marginHorizontal="@dimen/dip_20"
+                android:layout_marginTop="@dimen/dip_20"
+                style="@style/TextInputLayout.OutlineBox.CustomFont">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_phone_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:lines="1" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/input_layout_password_register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
