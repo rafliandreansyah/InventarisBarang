@@ -117,7 +117,7 @@
                     android:id="@+id/edt_phone_register"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
+                    android:inputType="phone"
                     android:lines="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -194,5 +194,12 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/loading_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="invisible"/>
 
 </FrameLayout>

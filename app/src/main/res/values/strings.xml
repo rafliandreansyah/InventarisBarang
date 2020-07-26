@@ -73,4 +73,13 @@
     <string name="tambah">Tambah</string>
     <string name="laporan">Laporan</string>
     <string name="image_item_report">image_item_report</string>
+
+    <!--Error edit text empty -->
+    <string name="email_empty">Email tidak boleh kosong!</string>
+    <string name="name_empty">Nama tidak boleh kosong!</string>
+    <string name="phone_empty">Telepon tidak boleh kosong!</string>
+    <string name="position_empty">Jabatan tidak boleh kosong!</string>
+    <string name="password_empty">Password tidak boleh kosong!</string>
+    <string name="password_confirm_empty">Konfirmasi password tidak boleh kosong!</string>
+    <string name="password_confirm_no_match">Konfirmasi password tidak sama!</string>
 </resources>
