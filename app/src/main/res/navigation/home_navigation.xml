@@ -3,71 +3,103 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_navigation"
-    app:startDestination="@id/dashboardFragment">
+    app:startDestination="@id/navigation_dashboard_fragment">
 
     <fragment
-        android:id="@+id/addProductFragment"
+        android:id="@+id/navigation_add_product_fragment"
         android:name="com.azhara.inventarisbarang.home.product.AddProductFragment"
         android:label="fragment_add_product"
-        tools:layout="@layout/fragment_add_product" />
+        tools:layout="@layout/fragment_add_product" >
+        <action
+            android:id="@+id/action_navigation_add_product_fragment_to_navigation_product_fragment"
+            app:destination="@id/navigation_product_fragment" />
+    </fragment>
     <fragment
-        android:id="@+id/addProductItemFragment"
-        android:name="com.azhara.inventarisbarang.home.product.detailproduct.AddProductItemFragment"
-        android:label="fragment_add_product_item"
-        tools:layout="@layout/fragment_add_product_item" />
-    <fragment
-        android:id="@+id/changePasswordFragment"
+        android:id="@+id/navigation_change_password_fragment"
         android:name="com.azhara.inventarisbarang.home.profile.ChangePasswordFragment"
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password" />
     <fragment
-        android:id="@+id/dashboardFragment"
+        android:id="@+id/navigation_dashboard_fragment"
         android:name="com.azhara.inventarisbarang.home.dashboard.DashboardFragment"
         android:label="fragment_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_dashboard" >
+        <action
+            android:id="@+id/action_navigation_dashboard_fragment_to_navigation_item_fragment"
+            app:destination="@id/navigation_item_fragment" />
+        <action
+            android:id="@+id/action_navigation_dashboard_fragment_to_navigation_account_fragment"
+            app:destination="@id/navigation_account_fragment" />
+        <action
+            android:id="@+id/action_navigation_dashboard_fragment_to_navigation_report_fragment"
+            app:destination="@id/navigation_report_fragment" />
+        <action
+            android:id="@+id/action_navigation_dashboard_fragment_to_navigation_product_fragment"
+            app:destination="@id/navigation_product_fragment" />
+    </fragment>
     <fragment
-        android:id="@+id/detailProductFragment"
-        android:name="com.azhara.inventarisbarang.home.product.DetailProductFragment"
-        android:label="fragment_detail_product"
-        tools:layout="@layout/fragment_detail_product" />
-    <fragment
-        android:id="@+id/editProductFragment"
+        android:id="@+id/navigation_edit_product_fragment"
         android:name="com.azhara.inventarisbarang.home.product.EditProductFragment"
         android:label="fragment_edit_product"
-        tools:layout="@layout/fragment_edit_product" />
+        tools:layout="@layout/fragment_edit_product" >
+        <action
+            android:id="@+id/action_navigation_edit_product_fragment_to_navigation_product_fragment"
+            app:destination="@id/navigation_product_fragment" />
+    </fragment>
     <fragment
-        android:id="@+id/editProductItemFragment"
-        android:name="com.azhara.inventarisbarang.home.product.detailproduct.EditProductItemFragment"
-        android:label="fragment_edit_product_item"
-        tools:layout="@layout/fragment_edit_product_item" />
-    <fragment
-        android:id="@+id/editProfileFragment"
+        android:id="@+id/navigation_edit_profile_fragment"
         android:name="com.azhara.inventarisbarang.home.profile.EditProfileFragment"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
     <fragment
-        android:id="@+id/itemFragment"
+        android:id="@+id/navigation_item_fragment"
         android:name="com.azhara.inventarisbarang.home.Item.ItemFragment"
         android:label="fragment_item"
-        tools:layout="@layout/fragment_item" />
+        tools:layout="@layout/fragment_item" >
+        <action
+            android:id="@+id/action_navigation_item_fragment_to_navigation_item_in_fragment"
+            app:destination="@id/navigation_item_in_fragment" />
+        <action
+            android:id="@+id/action_navigation_item_fragment_to_navigation_item_out_fragment"
+            app:destination="@id/navigation_item_out_fragment" />
+    </fragment>
     <fragment
-        android:id="@+id/itemInFragment"
+        android:id="@+id/navigation_item_in_fragment"
         android:name="com.azhara.inventarisbarang.home.Item.ItemInFragment"
         android:label="fragment_item_in"
         tools:layout="@layout/fragment_item_in" />
     <fragment
-        android:id="@+id/itemOutFragment"
+        android:id="@+id/navigation_item_out_fragment"
         android:name="com.azhara.inventarisbarang.home.Item.ItemOutFragment"
         android:label="fragment_item_out"
         tools:layout="@layout/fragment_item_out" />
     <fragment
-        android:id="@+id/accountFragment"
+        android:id="@+id/navigation_account_fragment"
         android:name="com.azhara.inventarisbarang.home.profile.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_navigation_account_fragment_to_navigation_edit_profile_fragment"
+            app:destination="@id/navigation_edit_profile_fragment" />
+        <action
+            android:id="@+id/action_navigation_account_fragment_to_navigation_change_password_fragment"
+            app:destination="@id/navigation_change_password_fragment" />
+    </fragment>
     <fragment
-        android:id="@+id/reportFragment"
+        android:id="@+id/navigation_report_fragment"
         android:name="com.azhara.inventarisbarang.home.report.ReportFragment"
         android:label="fragment_report"
         tools:layout="@layout/fragment_report" />
+    <fragment
+        android:id="@+id/navigation_product_fragment"
+        android:name="com.azhara.inventarisbarang.home.product.ProductFragment"
+        android:label="fragment_product"
+        tools:layout="@layout/fragment_product" >
+        <action
+            android:id="@+id/action_navigation_product_fragment_to_navigation_add_product_fragment"
+            app:destination="@id/navigation_add_product_fragment" />
+        <action
+            android:id="@+id/action_navigation_product_fragment_to_navigation_edit_product_fragment"
+            app:destination="@id/navigation_edit_product_fragment" />
+    </fragment>
 </navigation>

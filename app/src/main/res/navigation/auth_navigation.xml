@@ -3,31 +3,57 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/auth_navigation"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/navigation_login_fragment">
 
     <fragment
-        android:id="@+id/loginFragment"
+        android:id="@+id/navigation_login_fragment"
         android:name="com.azhara.inventarisbarang.auth.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_navigation_login_fragment_to_navigation_register_fragment"
+            app:destination="@id/navigation_register_fragment" />
+        <action
+            android:id="@+id/action_navigation_login_fragment_to_navigation_reset_fragment"
+            app:destination="@id/navigation_reset_fragment" />
+    </fragment>
     <fragment
-        android:id="@+id/registerFragment"
+        android:id="@+id/navigation_register_fragment"
         android:name="com.azhara.inventarisbarang.auth.register.RegisterFragment"
         android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
+        tools:layout="@layout/fragment_register" >
+        <action
+            android:id="@+id/action_navigation_register_fragment_to_navigation_login_fragment"
+            app:destination="@id/navigation_login_fragment" />
+        <action
+            android:id="@+id/action_navigation_register_fragment_to_navigation_register_success_fragment"
+            app:destination="@id/navigation_register_success_fragment" />
+    </fragment>
     <fragment
-        android:id="@+id/resetFragment"
+        android:id="@+id/navigation_reset_fragment"
         android:name="com.azhara.inventarisbarang.auth.resetpassword.ResetFragment"
         android:label="fragment_reset"
-        tools:layout="@layout/fragment_reset" />
+        tools:layout="@layout/fragment_reset" >
+        <action
+            android:id="@+id/action_navigation_reset_fragment_to_navigation_check_email_fragment2"
+            app:destination="@id/navigation_check_email_fragment" />
+    </fragment>
     <fragment
-        android:id="@+id/registerSuccessFragment"
+        android:id="@+id/navigation_register_success_fragment"
         android:name="com.azhara.inventarisbarang.auth.register.RegisterSuccessFragment"
         android:label="fragment_register_success"
-        tools:layout="@layout/fragment_register_success" />
+        tools:layout="@layout/fragment_register_success" >
+        <action
+            android:id="@+id/action_navigation_register_success_fragment_to_navigation_login_fragment"
+            app:destination="@id/navigation_login_fragment" />
+    </fragment>
     <fragment
-        android:id="@+id/checkEmailFragment"
+        android:id="@+id/navigation_check_email_fragment"
         android:name="com.azhara.inventarisbarang.auth.resetpassword.CheckEmailFragment"
         android:label="fragment_check_email"
-        tools:layout="@layout/fragment_check_email" />
+        tools:layout="@layout/fragment_check_email" >
+        <action
+            android:id="@+id/action_navigation_check_email_fragment_to_navigation_login_fragment"
+            app:destination="@id/navigation_login_fragment" />
+    </fragment>
 </navigation>
