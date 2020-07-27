@@ -23,6 +23,11 @@ import kotlinx.android.synthetic.main.fragment_profile.*
 class ProfileFragment : Fragment(), View.OnClickListener {
 
     private lateinit var profileViewModel: ProfileViewModel
+    private var name: String? = null
+    private var email: String? = null
+    private var phone: String? = null
+    private var position: String? = null
+    private var imgUrl: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,11 +57,17 @@ class ProfileFragment : Fragment(), View.OnClickListener {
                 loading(false)
                 if (data.imgUrl != null){
                     context?.let { Glide.with(it).load(data.imgUrl).into(img_profile) }
+                    imgUrl = data.imgUrl
                 }
                 tv_name_profile.text = "${data.name}"
                 tv_email_profile.text = "${data.email}"
                 tv_phone_profile.text = "${data.telephone}"
                 tv_position_profile.text = "${data.position}"
+
+                name = data.name
+                email = data.email
+                phone = data.telephone
+                position = data.position
             }else{
                 loading(false)
                 context?.let { Toasty.error(it, "Error load data", Toast.LENGTH_LONG, true).show() }
@@ -75,7 +86,7 @@ class ProfileFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.btn_to_edit_profile -> {
-                view?.findNavController()?.navigate(R.id.action_navigation_profile_fragment_to_navigation_edit_profile_fragment)
+                toEditProfile()
             }
             R.id.btn_to_change_password -> {
                 view?.findNavController()?.navigate(R.id.action_navigation_profile_fragment_to_navigation_change_password_fragment)
@@ -98,7 +109,7 @@ class ProfileFragment : Fragment(), View.OnClickListener {
     }
 
     private fun getMessage(){
-        val message = ProfileFragmentArgs.fromBundle(arguments as Bundle).successMessage
+        val message = ProfileFragmentArgs.fromBundle(arguments as Bundle).successMessage.toString()
 
         if (message != "success"){
             view?.let {
@@ -108,6 +119,22 @@ class ProfileFragment : Fragment(), View.OnClickListener {
                     .setActionTextColor(resources.getColor(R.color.colorWhite))
                     .show()
             }
+        }
+    }
+
+    private fun toEditProfile(){
+        if (name != null && email != null && position != null && phone != null){
+            val toEditProfile = ProfileFragmentDirections
+                .actionNavigationProfileFragmentToNavigationEditProfileFragment()
+            if (imgUrl != null){
+                toEditProfile.imgUrl = imgUrl
+            }
+            toEditProfile.name = name
+            toEditProfile.phone = phone
+            toEditProfile.position = position
+            toEditProfile.email = email
+            view?.findNavController()?.navigate(toEditProfile)
+
         }
     }
 }

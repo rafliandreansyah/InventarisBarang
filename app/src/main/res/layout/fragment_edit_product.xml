@@ -102,7 +102,7 @@
                     style="@style/TextInputLayout.OutlineBox.CustomFont">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edt_edit_name_product"
+                        android:id="@+id/edt_edit_position"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"

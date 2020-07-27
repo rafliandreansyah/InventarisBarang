@@ -60,6 +60,31 @@
         <action
             android:id="@+id/action_navigation_edit_profile_fragment_to_navigation_profile_fragment"
             app:destination="@id/navigation_profile_fragment" />
+        <argument
+            android:name="position"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="position" />
+        <argument
+            android:name="imgUrl"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="img" />
+        <argument
+            android:name="name"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="name" />
+        <argument
+            android:name="phone"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="phone" />
+        <argument
+            android:name="email"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="email" />
     </fragment>
     <fragment
         android:id="@+id/navigation_item_fragment"

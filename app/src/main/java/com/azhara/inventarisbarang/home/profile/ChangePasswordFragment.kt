@@ -12,6 +12,7 @@ import com.azhara.inventarisbarang.R
 import com.azhara.inventarisbarang.home.profile.viewmodel.ProfileViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_change_password.*
+import kotlinx.android.synthetic.main.fragment_login.*
 
 class ChangePasswordFragment : Fragment() {
 
@@ -47,8 +48,10 @@ class ChangePasswordFragment : Fragment() {
                     .actionNavigationChangePasswordFragmentToNavigationProfileFragment()
                 successChangePassword.successMessage = getString(R.string.change_password_message)
                 view?.findNavController()?.navigate(successChangePassword)
+                loading(false)
             }
             if (data == false && errorMessage != null){
+                loading(false)
                 view?.let {
                     Snackbar.make(it, "$errorMessage", Snackbar.LENGTH_INDEFINITE)
                         .setAction("Coba Lagi") {}
@@ -61,6 +64,7 @@ class ChangePasswordFragment : Fragment() {
     }
 
     private fun checkResetPassword(){
+        loading(true)
         input_layout_password_old.error = null
         input_layout_new_password.error = null
         input_layout_confirm_new_password.error = null
@@ -69,21 +73,25 @@ class ChangePasswordFragment : Fragment() {
         val confirmNewPassword = edt_confirm_new_password.text.toString().trim()
 
         if (oldPassword.isEmpty()){
+            loading(false)
             input_layout_password_old.error = getString(R.string.password_old_empty)
             return
         }
 
         if (newPassword.isEmpty()){
+            loading(false)
             input_layout_new_password.error = getString(R.string.password_new_empty)
             return
         }
 
         if (confirmNewPassword.isEmpty()){
+            loading(false)
             input_layout_confirm_new_password.error = getString(R.string.password_confirm_empty)
             return
         }
 
         if (newPassword != confirmNewPassword){
+            loading(false)
             input_layout_confirm_new_password.error = getString(R.string.password_confirm_no_match)
             return
         }
@@ -91,6 +99,14 @@ class ChangePasswordFragment : Fragment() {
         if (oldPassword.isNotEmpty() && newPassword.isNotEmpty()
             && confirmNewPassword.isNotEmpty() && newPassword == confirmNewPassword){
             resetPassword(oldPassword, newPassword)
+        }
+    }
+
+    private fun loading(state: Boolean){
+        if (state){
+            loading_change_password.visibility = View.VISIBLE
+        }else{
+            loading_change_password.visibility = View.INVISIBLE
         }
     }
 

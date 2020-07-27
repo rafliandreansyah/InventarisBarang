@@ -87,5 +87,5 @@
 
     <!--Success Message -->
     <string name="change_password_message">Password berhasil diganti</string>
-
+    <string name="edit_profile_message">Profil berhasil diedit</string>
 </resources>

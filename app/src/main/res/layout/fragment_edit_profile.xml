@@ -70,10 +70,11 @@
                         app:shape_roundRect_topRightRadius="4dp">
 
                         <ImageView
-                            android:id="@+id/img_edit_product_item"
+                            android:id="@+id/img_edit_profile"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            tools:src="@color/colorAccent"
+                            android:src="@drawable/blank_image_profile"
+                            android:scaleType="centerCrop"
                             android:contentDescription="@string/produk_item" />
 
                     </com.github.florent37.shapeofview.shapes.RoundRectView>
@@ -90,6 +91,15 @@
                         app:srcCompat="@drawable/ic_add"/>
 
                 </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tv_email_edit_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    style="@style/TextRegularSecondary"
+                    tools:text="riojohn@gmail.com"
+                    android:layout_marginTop="@dimen/dip_8"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/input_layout_edit_name"
@@ -143,7 +153,7 @@
                     style="@style/TextInputLayout.OutlineBox.CustomFont">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edt_edit_name_product"
+                        android:id="@+id/edt_edit_position"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="text"
@@ -163,5 +173,12 @@
         </ScrollView>
 
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/loading_edit_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="invisible"/>
 
 </FrameLayout>

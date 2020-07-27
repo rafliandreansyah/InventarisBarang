@@ -13,6 +13,7 @@ import androidx.navigation.findNavController
 import com.azhara.inventarisbarang.R
 import com.azhara.inventarisbarang.auth.viewmodel.AuthViewModel
 import com.azhara.inventarisbarang.home.HomeActivity
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -49,12 +50,17 @@ class LoginFragment : Fragment(), View.OnClickListener {
         authViewModel.login(email, password)
 
         authViewModel.loginState().observe(viewLifecycleOwner, Observer { loginState ->
-            loading(false)
             if (loginState == true){
-                context?.let { Toasty.success(it, "Success Login", Toasty.LENGTH_LONG, true).show() }
                 intentActivity()
             }else{
-                context?.let { Toasty.error(it, "${authViewModel.loginMessage}", Toast.LENGTH_LONG, true).show() }
+                if (authViewModel.loginMessage != null){
+                    view?.let {
+                        Snackbar.make(it, "${authViewModel.loginMessage}", Snackbar.LENGTH_INDEFINITE)
+                            .setAction("Coba Lagi") {}
+                            .setBackgroundTint(resources.getColor(R.color.colorRed))
+                            .show()
+                    }
+                }
             }
         })
     }
@@ -110,6 +116,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
         })
         activity?.finish()
+        loading(false)
     }
 
 }

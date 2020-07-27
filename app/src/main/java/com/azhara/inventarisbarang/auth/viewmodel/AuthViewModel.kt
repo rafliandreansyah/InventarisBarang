@@ -19,6 +19,7 @@ class AuthViewModel : ViewModel(){
     var loginMessage: String? = null
 
     fun login(email: String, password: String){
+        loginMessage = null
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             if (task.isSuccessful){
                 loginState.postValue(true)
