@@ -29,7 +29,7 @@
             app:destination="@id/navigation_item_fragment" />
         <action
             android:id="@+id/action_navigation_dashboard_fragment_to_navigation_account_fragment"
-            app:destination="@id/navigation_account_fragment" />
+            app:destination="@id/navigation_profile_fragment" />
         <action
             android:id="@+id/action_navigation_dashboard_fragment_to_navigation_report_fragment"
             app:destination="@id/navigation_report_fragment" />
@@ -74,15 +74,15 @@
         android:label="fragment_item_out"
         tools:layout="@layout/fragment_item_out" />
     <fragment
-        android:id="@+id/navigation_account_fragment"
+        android:id="@+id/navigation_profile_fragment"
         android:name="com.azhara.inventarisbarang.home.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
-            android:id="@+id/action_navigation_account_fragment_to_navigation_edit_profile_fragment"
+            android:id="@+id/action_navigation_profile_fragment_to_navigation_edit_profile_fragment"
             app:destination="@id/navigation_edit_profile_fragment" />
         <action
-            android:id="@+id/action_navigation_account_fragment_to_navigation_change_password_fragment"
+            android:id="@+id/action_navigation_profile_fragment_to_navigation_change_password_fragment"
             app:destination="@id/navigation_change_password_fragment" />
     </fragment>
     <fragment
