@@ -5,30 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.azhara.inventarisbarang.R
+import com.azhara.inventarisbarang.home.profile.viewmodel.ProfileViewModel
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.fragment_change_password.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ChangePasswordFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ChangePasswordFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var profileViewModel: ProfileViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,23 +25,73 @@ class ChangePasswordFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_change_password, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ChangePasswordFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ChangePasswordFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        profileViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[ProfileViewModel::class.java]
+        btn_change_password.setOnClickListener {
+            checkResetPassword()
+        }
+    }
+
+    private fun resetPassword(password: String?, newPassword: String?){
+        password?.let {
+            if (newPassword != null) {
+                profileViewModel.changePassword(it, newPassword)
+            }
+        }
+
+        profileViewModel.changePasswordState().observe(viewLifecycleOwner, Observer { data ->
+            val errorMessage = profileViewModel.changePasswordMsgError
+            if (data == true){
+                val successChangePassword = ChangePasswordFragmentDirections
+                    .actionNavigationChangePasswordFragmentToNavigationProfileFragment()
+                successChangePassword.successMessage = getString(R.string.change_password_message)
+                view?.findNavController()?.navigate(successChangePassword)
+            }
+            if (data == false && errorMessage != null){
+                view?.let {
+                    Snackbar.make(it, "$errorMessage", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Coba Lagi") {}
+                        .setBackgroundTint(resources.getColor(R.color.colorRed))
+                        .show()
                 }
             }
+
+        })
     }
+
+    private fun checkResetPassword(){
+        input_layout_password_old.error = null
+        input_layout_new_password.error = null
+        input_layout_confirm_new_password.error = null
+        val oldPassword = edt_password_old.text.toString().trim()
+        val newPassword = edt_new_password.text.toString().trim()
+        val confirmNewPassword = edt_confirm_new_password.text.toString().trim()
+
+        if (oldPassword.isEmpty()){
+            input_layout_password_old.error = getString(R.string.password_old_empty)
+            return
+        }
+
+        if (newPassword.isEmpty()){
+            input_layout_new_password.error = getString(R.string.password_new_empty)
+            return
+        }
+
+        if (confirmNewPassword.isEmpty()){
+            input_layout_confirm_new_password.error = getString(R.string.password_confirm_empty)
+            return
+        }
+
+        if (newPassword != confirmNewPassword){
+            input_layout_confirm_new_password.error = getString(R.string.password_confirm_no_match)
+            return
+        }
+
+        if (oldPassword.isNotEmpty() && newPassword.isNotEmpty()
+            && confirmNewPassword.isNotEmpty() && newPassword == confirmNewPassword){
+            resetPassword(oldPassword, newPassword)
+        }
+    }
+
 }

@@ -15,6 +15,7 @@ import com.azhara.inventarisbarang.auth.AuthActivity
 import com.azhara.inventarisbarang.home.HomeActivity
 import com.azhara.inventarisbarang.home.profile.viewmodel.ProfileViewModel
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -39,6 +40,7 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         back_button.setOnClickListener(this)
         profileViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[ProfileViewModel::class.java]
         dataUser()
+        getMessage()
     }
 
     private fun dataUser(){
@@ -93,5 +95,19 @@ class ProfileFragment : Fragment(), View.OnClickListener {
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
         })
         activity?.finish()
+    }
+
+    private fun getMessage(){
+        val message = ProfileFragmentArgs.fromBundle(arguments as Bundle).successMessage
+
+        if (message != "success"){
+            view?.let {
+                Snackbar.make(it, "$message", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("Ok") {}
+                    .setBackgroundTint(resources.getColor(R.color.colorGreen))
+                    .setActionTextColor(resources.getColor(R.color.colorWhite))
+                    .show()
+            }
+        }
     }
 }

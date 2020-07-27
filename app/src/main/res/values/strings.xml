@@ -82,4 +82,10 @@
     <string name="password_empty">Password tidak boleh kosong!</string>
     <string name="password_confirm_empty">Konfirmasi password tidak boleh kosong!</string>
     <string name="password_confirm_no_match">Konfirmasi password tidak sama!</string>
+    <string name="password_old_empty">Password tidak boleh kosong!</string>
+    <string name="password_new_empty">Password baru tidak boleh kosong!</string>
+
+    <!--Success Message -->
+    <string name="change_password_message">Password berhasil diganti</string>
+
 </resources>

@@ -18,7 +18,13 @@
         android:id="@+id/navigation_change_password_fragment"
         android:name="com.azhara.inventarisbarang.home.profile.ChangePasswordFragment"
         android:label="fragment_change_password"
-        tools:layout="@layout/fragment_change_password" />
+        tools:layout="@layout/fragment_change_password" >
+        <action
+            android:id="@+id/action_navigation_change_password_fragment_to_navigation_profile_fragment"
+            app:destination="@id/navigation_profile_fragment"
+            app:popUpTo="@id/navigation_dashboard_fragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_dashboard_fragment"
         android:name="com.azhara.inventarisbarang.home.dashboard.DashboardFragment"
@@ -50,7 +56,11 @@
         android:id="@+id/navigation_edit_profile_fragment"
         android:name="com.azhara.inventarisbarang.home.profile.EditProfileFragment"
         android:label="fragment_edit_profile"
-        tools:layout="@layout/fragment_edit_profile" />
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_navigation_edit_profile_fragment_to_navigation_profile_fragment"
+            app:destination="@id/navigation_profile_fragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_item_fragment"
         android:name="com.azhara.inventarisbarang.home.Item.ItemFragment"
@@ -84,6 +94,11 @@
         <action
             android:id="@+id/action_navigation_profile_fragment_to_navigation_change_password_fragment"
             app:destination="@id/navigation_change_password_fragment" />
+        <argument
+            android:name="success_message"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="success" />
     </fragment>
     <fragment
         android:id="@+id/navigation_report_fragment"
