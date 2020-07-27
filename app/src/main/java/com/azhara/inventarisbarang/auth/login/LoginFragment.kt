@@ -1,5 +1,6 @@
 package com.azhara.inventarisbarang.auth.login
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,12 +12,22 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.azhara.inventarisbarang.R
 import com.azhara.inventarisbarang.auth.viewmodel.AuthViewModel
+import com.azhara.inventarisbarang.home.HomeActivity
+import com.google.firebase.auth.FirebaseAuth
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : Fragment(), View.OnClickListener {
 
     private lateinit var authViewModel: AuthViewModel
+
+    override fun onStart() {
+        super.onStart()
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            intentActivity()
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +52,7 @@ class LoginFragment : Fragment(), View.OnClickListener {
             loading(false)
             if (loginState == true){
                 context?.let { Toasty.success(it, "Success Login", Toasty.LENGTH_LONG, true).show() }
+                intentActivity()
             }else{
                 context?.let { Toasty.error(it, "${authViewModel.loginMessage}", Toast.LENGTH_LONG, true).show() }
             }
@@ -91,6 +103,13 @@ class LoginFragment : Fragment(), View.OnClickListener {
         }else{
             loading_login.visibility = View.INVISIBLE
         }
+    }
+
+    private fun intentActivity(){
+        startActivity(Intent(context, HomeActivity::class.java).apply {
+            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        })
+        activity?.finish()
     }
 
 }

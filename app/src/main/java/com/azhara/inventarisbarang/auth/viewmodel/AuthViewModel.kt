@@ -55,7 +55,7 @@ class AuthViewModel : ViewModel(){
     }
 
     private fun createUserDb(name: String?, position: String?, email: String?, telephone: String?, userId: String?){
-        val user = User(name, position, email, telephone)
+        val user = User(name, position, email, telephone, null)
         val userDb = db.collection("users").document("$userId")
         userDb.set(user).addOnCompleteListener { task ->
             if (task.isSuccessful){
