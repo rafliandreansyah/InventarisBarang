@@ -1,34 +1,25 @@
 package com.azhara.inventarisbarang.home.product
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.azhara.inventarisbarang.R
+import com.azhara.inventarisbarang.entity.Product
+import com.azhara.inventarisbarang.home.product.adapter.ProductAdapter
+import com.azhara.inventarisbarang.home.product.viewmodel.ProductViewModel
+import kotlinx.android.synthetic.main.fragment_edit_profile.*
+import kotlinx.android.synthetic.main.fragment_product.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ProductFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ProductFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var productViewModel: ProductViewModel
+    private lateinit var productAdapter: ProductAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,23 +29,53 @@ class ProductFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_product, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ProductFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ProductFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        productViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[ProductViewModel::class.java]
+        getDataProduct()
     }
+
+    private fun getDataProduct(){
+        loading(true)
+        productViewModel.getDataProduct()
+
+        productViewModel.productData().observe(viewLifecycleOwner, Observer { data ->
+            if (data.isNotEmpty()){
+                loading(false)
+                emptyState(false)
+                setDataItem(data)
+                Log.d("data", "$data")
+            }else{
+                loading(false)
+                emptyState(true)
+            }
+        })
+    }
+
+    private fun setDataItem(data: List<Product>) {
+        productAdapter = ProductAdapter()
+        with(rv_product){
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(context)
+            adapter = productAdapter
+        }
+        productAdapter.submitList(data)
+    }
+
+    private fun emptyState(state: Boolean){
+        if(state){
+            layout_empty_product.visibility = View.VISIBLE
+        }else{
+            layout_empty_product.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun loading(state: Boolean){
+        if (state){
+            loading_product.visibility = View.VISIBLE
+        }else{
+            loading_product.visibility = View.INVISIBLE
+        }
+    }
+
 }

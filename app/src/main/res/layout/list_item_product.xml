@@ -24,6 +24,7 @@
             app:shape_roundRect_topRightRadius="4dp">
             
             <ImageView
+                android:id="@+id/img_product_item"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:src="@color/colorAccent"
@@ -39,6 +40,7 @@
             android:layout_marginStart="@dimen/dip_16">
 
             <TextView
+                android:id="@+id/tv_product_name_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="Lemon"
@@ -46,6 +48,7 @@
                 android:textSize="16sp"/>
 
             <TextView
+                android:id="@+id/tv_total_product_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 tools:text="50 items"
@@ -55,7 +58,7 @@
 
         </LinearLayout>
         <ImageView
-            android:id="@+id/img_option"
+            android:id="@+id/btn_option_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_option"

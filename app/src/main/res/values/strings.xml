@@ -88,4 +88,7 @@
     <!--Success Message -->
     <string name="change_password_message">Password berhasil diganti</string>
     <string name="edit_profile_message">Profil berhasil diedit</string>
+    <string name="illustrasi_data_kosong">illustrasi data kosong</string>
+    <string name="oops">Oops...</string>
+    <string name="data_produk_kosong_silahkan_tambah_produk">Data produk kosong. Silahkan tambah produk.</string>
 </resources>

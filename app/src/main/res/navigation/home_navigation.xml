@@ -59,7 +59,8 @@
         tools:layout="@layout/fragment_edit_profile" >
         <action
             android:id="@+id/action_navigation_edit_profile_fragment_to_navigation_profile_fragment"
-            app:destination="@id/navigation_profile_fragment" />
+            app:destination="@id/navigation_profile_fragment"
+            app:popUpTo="@id/navigation_profile_fragment" />
         <argument
             android:name="position"
             app:argType="string"

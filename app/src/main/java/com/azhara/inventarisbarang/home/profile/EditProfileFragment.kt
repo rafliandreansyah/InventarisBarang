@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -46,6 +45,7 @@ class EditProfileFragment : Fragment(), View.OnClickListener {
         setData()
         btn_edit_profile.setOnClickListener(this)
         fab_choose_pic_edit_product_item.setOnClickListener(this)
+        back_button_edit_profile.setOnClickListener(this)
     }
 
     private fun setData(){
@@ -212,6 +212,9 @@ class EditProfileFragment : Fragment(), View.OnClickListener {
             }
             R.id.fab_choose_pic_edit_product_item -> {
                 openGallery()
+            }
+            R.id.back_button_edit_profile -> {
+                activity?.onBackPressed()
             }
         }
     }
