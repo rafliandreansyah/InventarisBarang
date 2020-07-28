@@ -26,7 +26,7 @@
                 android:orientation="horizontal"
                 tools:ignore="UseCompoundDrawables,UselessParent">
                 <ImageView
-                    android:id="@+id/back_button"
+                    android:id="@+id/back_button_product"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
@@ -53,7 +53,7 @@
     </LinearLayout>
     
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/btn_add"
+        android:id="@+id/btn_add_product"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dip_16"

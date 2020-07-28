@@ -27,7 +27,8 @@
                 android:id="@+id/img_product_item"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:src="@color/colorAccent"
+                android:src="@drawable/empty_image_product"
+                android:scaleType="centerCrop"
                 android:contentDescription="@string/image_item_product" />
 
         </com.github.florent37.shapeofview.shapes.RoundRectView>

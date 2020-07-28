@@ -84,10 +84,15 @@
     <string name="password_confirm_no_match">Konfirmasi password tidak sama!</string>
     <string name="password_old_empty">Password tidak boleh kosong!</string>
     <string name="password_new_empty">Password baru tidak boleh kosong!</string>
+    <string name="product_name_empty">Nama produk tidak boleh kosong!</string>
+    <string name="total_item_product_empty">Jumlah produk tidak boleh kosong!</string>
 
     <!--Success Message -->
     <string name="change_password_message">Password berhasil diganti</string>
     <string name="edit_profile_message">Profil berhasil diedit</string>
+    <string name="add_product_message">Produk berhasil ditambah</string>
+
+
     <string name="illustrasi_data_kosong">illustrasi data kosong</string>
     <string name="oops">Oops...</string>
     <string name="data_produk_kosong_silahkan_tambah_produk">Data produk kosong. Silahkan tambah produk.</string>

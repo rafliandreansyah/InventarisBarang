@@ -40,9 +40,11 @@ class ProductAdapter : ListAdapter<Product, ProductAdapter.ProductViewHolder>(DI
     inner class ProductViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         fun bind(product: Product){
             with(itemView){
-                Glide.with(context).load(product.imgUrl).into(img_product_item)
+                if (product.imgUrl != null){
+                    Glide.with(context).load(product.imgUrl).into(img_product_item)
+                }
                 tv_product_name_item.text = product.productName
-                tv_total_product_item.text = product.totalItem.toString()
+                tv_total_product_item.text = "${product.totalItem} items"
             }
         }
     }

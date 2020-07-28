@@ -51,8 +51,10 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
         authViewModel.loginState().observe(viewLifecycleOwner, Observer { loginState ->
             if (loginState == true){
+                loading(false)
                 intentActivity()
             }else{
+                loading(false)
                 if (authViewModel.loginMessage != null){
                     view?.let {
                         Snackbar.make(it, "${authViewModel.loginMessage}", Snackbar.LENGTH_INDEFINITE)

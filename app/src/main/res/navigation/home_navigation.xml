@@ -12,7 +12,8 @@
         tools:layout="@layout/fragment_add_product" >
         <action
             android:id="@+id/action_navigation_add_product_fragment_to_navigation_product_fragment"
-            app:destination="@id/navigation_product_fragment" />
+            app:destination="@id/navigation_product_fragment"
+            app:popUpTo="@id/navigation_dashboard_fragment" />
     </fragment>
     <fragment
         android:id="@+id/navigation_change_password_fragment"
@@ -41,7 +42,8 @@
             app:destination="@id/navigation_report_fragment" />
         <action
             android:id="@+id/action_navigation_dashboard_fragment_to_navigation_product_fragment"
-            app:destination="@id/navigation_product_fragment" />
+            app:destination="@id/navigation_product_fragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/navigation_edit_product_fragment"
