@@ -52,7 +52,28 @@
         tools:layout="@layout/fragment_edit_product" >
         <action
             android:id="@+id/action_navigation_edit_product_fragment_to_navigation_product_fragment"
-            app:destination="@id/navigation_product_fragment" />
+            app:destination="@id/navigation_product_fragment"
+            app:popUpTo="@id/navigation_dashboard_fragment" />
+        <argument
+            android:name="productId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="productId" />
+        <argument
+            android:name="productName"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="productName" />
+        <argument
+            android:name="productImg"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="productImg" />
+        <argument
+            android:name="totalItem"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="totalItem" />
     </fragment>
     <fragment
         android:id="@+id/navigation_edit_profile_fragment"

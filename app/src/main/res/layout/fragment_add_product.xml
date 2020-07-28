@@ -96,7 +96,7 @@
                     android:id="@+id/input_layout_add_name_product"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/nama_produk_item"
+                    android:hint="@string/nama_produk"
                     app:endIconMode="clear_text"
                     app:boxStrokeColor="@color/colorPrimary"
                     android:layout_marginHorizontal="@dimen/dip_20"

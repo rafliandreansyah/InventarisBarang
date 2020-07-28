@@ -16,6 +16,7 @@ class ProductViewModel: ViewModel(){
 
     private val productData = MutableLiveData<List<Product>>()
     private val productState = MutableLiveData<Boolean>()
+    private val editProductState = MutableLiveData<Boolean>()
 
     fun getDataProduct(){
         val productDb = db.collection("product")
@@ -26,8 +27,17 @@ class ProductViewModel: ViewModel(){
             }
 
             if (value != null){
-                val data = value.toObjects(Product::class.java)
-                productData.postValue(data)
+                val listProduct = ArrayList<Product>()
+                val data = value.documents
+                data.forEach {
+                    val product = it.toObject(Product::class.java)
+                    if (product != null){
+                        product.productId = it.id
+                        listProduct.add(product)
+                    }
+                }
+                productData.postValue(listProduct)
+                Log.d("product", "$listProduct")
             }
         }
     }
@@ -90,4 +100,66 @@ class ProductViewModel: ViewModel(){
     }
 
     fun addProductState(): LiveData<Boolean> = productState
+
+    fun editProductWithoutImage(name: String?, totalItem: Int?, productId: String?){
+        val productDb = db.collection("product").document("$productId")
+        val data = hashMapOf<String?, Any?>(
+            "productName" to name,
+            "totalItem" to totalItem
+        )
+        productDb.update(data).addOnCompleteListener { task ->
+            if (task.isSuccessful){
+                editProductState.postValue(true)
+            }else{
+                Log.e(tag, "Error edit product: ${task.exception?.message}")
+                editProductState.postValue(false)
+            }
+        }
+    }
+
+    private fun editProductDb(name: String?, totalItem: Int?, productId: String?, imgUrl: String?){
+        val productDb = db.collection("product").document("$productId")
+
+        val data = hashMapOf<String?, Any?>(
+            "productName" to name,
+            "totalItem" to totalItem,
+            "imgUrl" to imgUrl
+        )
+
+        productDb.update(data).addOnCompleteListener { task ->
+            if (task.isSuccessful){
+                editProductState.postValue(true)
+            }else{
+                Log.e(tag, "Error edit product: ${task.exception?.message}")
+                editProductState.postValue(false)
+            }
+        }
+    }
+
+    fun editProductWithImage(name: String?, totalItem: Int?, productId: String?, byteArrayImg: ByteArray?){
+        val imgStorage = storage.reference.child("product")
+            .child("$name").child("$name")
+
+        val uploadTask = byteArrayImg?.let { imgStorage.putBytes(it) }
+        uploadTask?.addOnSuccessListener { taskSnapshot ->
+            (uploadTask).continueWithTask { task ->
+                if (!task.isSuccessful) {
+                    Log.e(
+                        tag,
+                        "Error upload photo edit product: ${task.exception?.message}"
+                    )
+                }
+                imgStorage.downloadUrl
+            }.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val urlImg = task.result
+                    editProductDb(name, totalItem, productId, urlImg.toString())
+                } else {
+                    Log.d(tag, "Error upload photo edit product: ${task.exception?.message}")
+                }
+            }
+        }
+    }
+
+    fun editProductState(): LiveData<Boolean> = editProductState
 }

@@ -6,7 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
+import android.widget.Toast
+import androidx.core.graphics.toColorInt
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -15,8 +16,9 @@ import com.azhara.inventarisbarang.R
 import com.azhara.inventarisbarang.entity.Product
 import com.azhara.inventarisbarang.home.product.adapter.ProductAdapter
 import com.azhara.inventarisbarang.home.product.viewmodel.ProductViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.fragment_edit_profile.*
+import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_product.*
 
 class ProductFragment : Fragment(), View.OnClickListener {
@@ -37,8 +39,10 @@ class ProductFragment : Fragment(), View.OnClickListener {
         btn_add_product.setOnClickListener(this)
         back_button_product.setOnClickListener(this)
         productViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[ProductViewModel::class.java]
+        productAdapter = ProductAdapter()
         getDataProduct()
         statusMessage()
+        onItemOptionClicked()
     }
 
     private fun getDataProduct(){
@@ -59,7 +63,6 @@ class ProductFragment : Fragment(), View.OnClickListener {
     }
 
     private fun setDataItem(data: List<Product>) {
-        productAdapter = ProductAdapter()
         with(rv_product){
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
@@ -108,6 +111,51 @@ class ProductFragment : Fragment(), View.OnClickListener {
                     .show()
             }
         }
+    }
+
+    private fun onItemOptionClicked(){
+        productAdapter.setOnOptionClicked(object : ProductAdapter.OnOptionClicked{
+            override fun onOptionClicked(product: Product) {
+                dialogSetting(product)
+            }
+
+        })
+    }
+
+    private fun dialogSetting(product: Product) {
+        val items = arrayOf(getString(R.string.edit), getString(R.string.delete))
+        MaterialAlertDialogBuilder(context)
+            .setTitle(resources.getString(R.string.product_setting))
+            .setItems(items) { dialog, which ->
+                if (items[which] == getString(R.string.edit)){
+                    val productData = ProductFragmentDirections
+                        .actionNavigationProductFragmentToNavigationEditProductFragment()
+                    productData.productId = product.productId
+                    productData.productName = product.productName
+                    productData.totalItem = product.totalItem.toString()
+                    if (product.imgUrl != null){
+                        productData.productImg = product.imgUrl
+                    }
+                    view?.findNavController()?.navigate(productData)
+                }else{
+                    alertDialogDelete(product.productName)
+                }
+
+            }
+            .show()
+    }
+
+    private fun alertDialogDelete(productName: String?) {
+        MaterialAlertDialogBuilder(context, R.style.AlertDialogTheme)
+            .setTitle(resources.getString(R.string.delete_product))
+            .setMessage("${resources.getString(R.string.delete_product_subtitle)} $productName?")
+            .setNegativeButton(resources.getString(R.string.cancel)) { dialog, which ->
+                // Respond to negative button press
+            }
+            .setPositiveButton(resources.getString(R.string.delete)) { dialog, which ->
+                context?.let { Toasty.success(it, "Hapus", Toast.LENGTH_SHORT).show() }
+            }
+            .show()
     }
 
 }

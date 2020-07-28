@@ -49,7 +49,6 @@
     <string name="image_item_product">image item product</string>
     <string name="tambah_produk_item">Tambah Produk Item</string>
     <string name="btn_add_foto">btn add foto</string>
-    <string name="nama_produk_item">Nama Produk Item</string>
     <string name="jumlah">Jumlah</string>
     <string name="edit_produk_item">Edit Produk Item</string>
     <string name="image_profile">image profile</string>
@@ -91,9 +90,15 @@
     <string name="change_password_message">Password berhasil diganti</string>
     <string name="edit_profile_message">Profil berhasil diedit</string>
     <string name="add_product_message">Produk berhasil ditambah</string>
-
+    <string name="edit_product_message">Produk berhasil diedit</string>
 
     <string name="illustrasi_data_kosong">illustrasi data kosong</string>
     <string name="oops">Oops...</string>
     <string name="data_produk_kosong_silahkan_tambah_produk">Data produk kosong. Silahkan tambah produk.</string>
+
+    <string name="delete">Hapus</string>
+    <string name="cancel">Tidak</string>
+    <string name="product_setting">Pengaturan Produk</string>
+    <string name="delete_product">Hapus Produk?</string>
+    <string name="delete_product_subtitle">Apakah anda yakin ingin menghapus</string>
 </resources>

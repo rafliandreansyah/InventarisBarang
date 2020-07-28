@@ -26,6 +26,12 @@ class ProductAdapter : ListAdapter<Product, ProductAdapter.ProductViewHolder>(DI
         }
     }
 
+    private var onOptionClicked: OnOptionClicked? = null
+
+    fun setOnOptionClicked(onOptionClicked: OnOptionClicked?){
+        this.onOptionClicked = onOptionClicked
+    }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -45,10 +51,15 @@ class ProductAdapter : ListAdapter<Product, ProductAdapter.ProductViewHolder>(DI
                 }
                 tv_product_name_item.text = product.productName
                 tv_total_product_item.text = "${product.totalItem} items"
+                btn_option_item.setOnClickListener {
+                    onOptionClicked?.onOptionClicked(product)
+                }
             }
         }
     }
 
-
+    interface OnOptionClicked{
+        fun onOptionClicked(product: Product)
+    }
 
 }
