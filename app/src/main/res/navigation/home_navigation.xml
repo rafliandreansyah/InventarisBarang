@@ -121,17 +121,52 @@
         <action
             android:id="@+id/action_navigation_item_fragment_to_navigation_item_out_fragment"
             app:destination="@id/navigation_item_out_fragment" />
+        <argument
+            android:name="message"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="message" />
     </fragment>
     <fragment
         android:id="@+id/navigation_item_in_fragment"
         android:name="com.azhara.inventarisbarang.home.Item.ItemInFragment"
         android:label="fragment_item_in"
-        tools:layout="@layout/fragment_item_in" />
+        tools:layout="@layout/fragment_item_in" >
+        <action
+            android:id="@+id/action_navigation_item_in_fragment_to_navigation_item_fragment"
+            app:destination="@id/navigation_item_fragment"
+            app:popUpTo="@id/navigation_dashboard_fragment" />
+        <argument
+            android:name="productId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="productId" />
+        <argument
+            android:name="totalItem"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="totalItem" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_item_out_fragment"
         android:name="com.azhara.inventarisbarang.home.Item.ItemOutFragment"
         android:label="fragment_item_out"
-        tools:layout="@layout/fragment_item_out" />
+        tools:layout="@layout/fragment_item_out" >
+        <action
+            android:id="@+id/action_navigation_item_out_fragment_to_navigation_item_fragment"
+            app:destination="@id/navigation_item_fragment"
+            app:popUpTo="@id/navigation_dashboard_fragment" />
+        <argument
+            android:name="productId"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="productId" />
+        <argument
+            android:name="totalItem"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="totalItem" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_profile_fragment"
         android:name="com.azhara.inventarisbarang.home.profile.ProfileFragment"
