@@ -1,17 +1,22 @@
 package com.azhara.inventarisbarang.home.Item
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.azhara.inventarisbarang.R
 import com.azhara.inventarisbarang.entity.Product
 import com.azhara.inventarisbarang.home.Item.viewmodel.ItemViewModel
+import com.azhara.inventarisbarang.home.product.AddProductFragment
 import com.azhara.inventarisbarang.home.product.adapter.ProductAdapter
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_item.*
 
 class ItemFragment : Fragment() {
@@ -32,6 +37,8 @@ class ItemFragment : Fragment() {
         itemViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[ItemViewModel::class.java]
         productAdapter = ProductAdapter()
         loadData()
+        onItemOptionClicked()
+        statusMessage()
     }
 
     private fun loadData(){
@@ -58,6 +65,53 @@ class ItemFragment : Fragment() {
             adapter = productAdapter
         }
         productAdapter.submitList(data)
+    }
+
+    private fun onItemOptionClicked(){
+        productAdapter.setOnOptionClicked(object : ProductAdapter.OnOptionClicked{
+            override fun onOptionClicked(product: Product) {
+                dialogSetting(product)
+            }
+        })
+    }
+
+    private fun dialogSetting(product: Product) {
+        val items = arrayOf(getString(R.string.barang_masuk), getString(R.string.barang_keluar))
+        MaterialAlertDialogBuilder(context)
+            .setTitle(resources.getString(R.string.logistic_setting))
+            .setItems(items) { dialog, which ->
+                if (items[which] == getString(R.string.barang_masuk)){
+                    val productDataIn = ItemFragmentDirections
+                        .actionNavigationItemFragmentToNavigationItemInFragment()
+                    productDataIn.productId = product.productId
+                    productDataIn.productName = product.productName
+                    productDataIn.totalItem = product.totalItem.toString()
+                    productDataIn.imgUrl = product.imgUrl
+                    view?.findNavController()?.navigate(productDataIn)
+                }else{
+                    val productOut = ItemFragmentDirections
+                        .actionNavigationItemFragmentToNavigationItemOutFragment()
+                    productOut.productId = product.productId
+                    productOut.productName = product.productName
+                    productOut.totalItem = product.totalItem.toString()
+                    view?.findNavController()?.navigate(productOut)
+                }
+            }
+            .show()
+    }
+
+    private fun statusMessage(){
+        val message = ItemFragmentArgs.fromBundle(arguments as Bundle).message
+        if (message != "message"){
+            view?.let {
+                Snackbar.make(it, "$message", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("Ok") {
+                    }
+                    .setBackgroundTint(resources.getColor(R.color.colorGreen))
+                    .setActionTextColor(resources.getColor(R.color.colorWhite))
+                    .show()
+            }
+        }
     }
 
     private fun loading(state: Boolean){

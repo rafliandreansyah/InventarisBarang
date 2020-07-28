@@ -68,6 +68,8 @@
     <string name="illustrasi_barang_keluar">illustrasi barang keluar</string>
     <string name="kurangi">Kurangi</string>
     <string name="jumlah_item">Jumlah item</string>
+    <string name="jumlah_item_masuk">Jumlah item masuk</string>
+    <string name="jumlah_item_keluar">Jumlah item keluar</string>
     <string name="illustrasi_barang_masuk">illustrasi barang masuk</string>
     <string name="tambah">Tambah</string>
     <string name="laporan">Laporan</string>
@@ -85,12 +87,17 @@
     <string name="password_new_empty">Password baru tidak boleh kosong!</string>
     <string name="product_name_empty">Nama produk tidak boleh kosong!</string>
     <string name="total_item_product_empty">Jumlah produk tidak boleh kosong!</string>
+    <string name="item_in_empty">Jumlah item masuk tidak boleh kosong!</string>
+    <string name="item_out_empty">Jumlah item keluar tidak boleh kosong!</string>
+    <string name="item_number_error">Angka tidak boleh diawali dengan angka 0</string>
+    <string name="higher_than_stock">Jumlah barang keluar lebih banyak dari pada stok!</string>
 
     <!--Success Message -->
     <string name="change_password_message">Password berhasil diganti</string>
     <string name="edit_profile_message">Profil berhasil diedit</string>
     <string name="add_product_message">Produk berhasil ditambah</string>
     <string name="edit_product_message">Produk berhasil diedit</string>
+    <string name="product_item_report_message">Produk barang masuk berhasil dicatat</string>
 
     <string name="illustrasi_data_kosong">illustrasi data kosong</string>
     <string name="oops">Oops...</string>
@@ -99,6 +106,7 @@
     <string name="delete">Hapus</string>
     <string name="cancel">Tidak</string>
     <string name="product_setting">Pengaturan Produk</string>
+    <string name="logistic_setting">Pengaturan Barang</string>
     <string name="delete_product">Hapus Produk?</string>
     <string name="delete_product_subtitle">Apakah anda yakin ingin menghapus</string>
 </resources>

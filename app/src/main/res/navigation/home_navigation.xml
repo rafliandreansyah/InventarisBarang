@@ -146,6 +146,16 @@
             app:argType="string"
             app:nullable="true"
             android:defaultValue="totalItem" />
+        <argument
+            android:name="productName"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="productName" />
+        <argument
+            android:name="imgUrl"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="imgUrl" />
     </fragment>
     <fragment
         android:id="@+id/navigation_item_out_fragment"
@@ -166,6 +176,11 @@
             app:argType="string"
             app:nullable="true"
             android:defaultValue="totalItem" />
+        <argument
+            android:name="productName"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="productName" />
     </fragment>
     <fragment
         android:id="@+id/navigation_profile_fragment"

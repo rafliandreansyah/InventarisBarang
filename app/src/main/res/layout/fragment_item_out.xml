@@ -63,41 +63,51 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:layout_marginTop="@dimen/dip_30"
-                    android:layout_marginHorizontal="@dimen/dip_20"
-                    android:weightSum="3">
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/input_layout_item_out"
-                        android:layout_width="0dp"
+                    android:layout_marginHorizontal="@dimen/dip_20">
+                    <TextView
+                        android:id="@+id/tv_name_item_out"
+                        style="@style/TextRegularPrimary"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="2"
-                        android:hint="@string/jumlah_item"
-                        app:endIconMode="clear_text"
-                        app:boxStrokeColor="@color/colorPrimary"
-                        style="@style/TextInputLayout.OutlineBox.CustomFont">
+                        tools:text="Lemon"
+                        android:textSize="18sp" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/edt_email_login"
-                            android:layout_width="match_parent"
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/input_layout_item_out"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:inputType="text"
-                            android:lines="1"
-                            />
+                            android:layout_weight="2"
+                            android:hint="@string/jumlah_item_keluar"
+                            app:endIconMode="clear_text"
+                            app:boxStrokeColor="@color/colorPrimary"
+                            style="@style/TextInputLayout.OutlineBox.CustomFont">
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edt_email_login"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:lines="1"
+                                />
 
-                    <Button
-                        android:id="@+id/btn_item_out"
-                        android:layout_weight="1"
-                        android:text="@string/kurangi"
-                        android:layout_width="0dp"
-                        android:layout_marginStart="@dimen/dip_16"
-                        style="@style/Button"/>
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <Button
+                            android:id="@+id/btn_item_out"
+                            android:layout_weight="1"
+                            android:text="@string/kurangi"
+                            android:layout_width="0dp"
+                            android:layout_marginStart="@dimen/dip_16"
+                            style="@style/Button"/>
+                    </LinearLayout>
                 </LinearLayout>
-
-
             </LinearLayout>
         </ScrollView>
 

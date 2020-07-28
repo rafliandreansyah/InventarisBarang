@@ -5,13 +5,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.azhara.inventarisbarang.entity.Product
+import com.azhara.inventarisbarang.entity.ReportItem
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ItemViewModel : ViewModel(){
 
     private val db = FirebaseFirestore.getInstance()
     private val tag = ItemViewModel::class.java.simpleName
     private val productData = MutableLiveData<List<Product>>()
+    private val reportState = MutableLiveData<Boolean>()
 
     fun getDataProduct(){
         val productDb = db.collection("product")
@@ -38,5 +43,46 @@ class ItemViewModel : ViewModel(){
     }
 
     fun productData() : LiveData<List<Product>> = productData
+
+    fun itemIn(
+        productId: String?,
+        totalItem: Int?,
+        totalItemIn: Int?,
+        imgUrl: String?,
+        productName: String?
+    ){
+        val productDb = db.collection("product").document("$productId")
+
+        productDb.update("totalItem", totalItem).addOnCompleteListener { task ->
+            if (task.isSuccessful){
+                setReport(totalItemIn, 1, imgUrl, productName, totalItem)
+            }else{
+                reportState.postValue(false)
+                Log.e(tag, "Error update item in: ${task.exception?.message}")
+            }
+        }
+    }
+
+    private fun setReport(
+        totalItemUpdate: Int?,
+        typeReport: Int?,
+        imgUrl: String?,
+        productName: String?,
+        totalItem: Int?
+    ){
+        val reportDb = db.collection("report")
+        val timeNow = System.currentTimeMillis()
+        val report = ReportItem(productName, imgUrl, Timestamp(Date(timeNow)), typeReport, totalItemUpdate, totalItem)
+        reportDb.add(report).addOnCompleteListener { task ->
+            if (task.isSuccessful){
+                reportState.postValue(true)
+            }else{
+                reportState.postValue(false)
+                Log.e(tag, "Error set report: ${task.exception?.message}")
+            }
+        }
+    }
+
+    fun reportState(): LiveData<Boolean> = reportState
 }
 
