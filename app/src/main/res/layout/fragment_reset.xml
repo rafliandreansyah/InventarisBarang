@@ -9,7 +9,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
                 android:text="@string/masukkan_email_untuk_reset_password"
                 android:layout_marginTop="@dimen/dip_30"
                 style="@style/TextRegularPrimary"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/input_layout_email_reset_password"
@@ -57,10 +57,10 @@
                 android:layout_marginTop="@dimen/dip_30"
                 android:layout_marginHorizontal="@dimen/dip_20"
                 android:text="@string/reset_sekarang"
-                style="@style/Button"/>
+                style="@style/Button" />
 
         </LinearLayout>
-        
+
     </ScrollView>
 
     <ProgressBar
@@ -68,5 +68,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 </FrameLayout>

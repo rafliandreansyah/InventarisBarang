@@ -24,6 +24,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 tools:ignore="UseCompoundDrawables,UselessParent">
+
                 <ImageView
                     android:id="@+id/back_button_item_in"
                     android:layout_width="wrap_content"
@@ -58,7 +59,7 @@
                     android:layout_width="250dp"
                     android:layout_height="200dp"
                     android:contentDescription="@string/illustrasi_barang_masuk"
-                    android:src="@drawable/illustration_logistics_in"/>
+                    android:src="@drawable/illustration_logistics_in" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -97,8 +98,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:inputType="number"
-                                android:lines="1"
-                                />
+                                android:lines="1" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
@@ -108,7 +108,7 @@
                             android:text="@string/tambah"
                             android:layout_width="0dp"
                             android:layout_marginStart="@dimen/dip_16"
-                            style="@style/Button"/>
+                            style="@style/Button" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

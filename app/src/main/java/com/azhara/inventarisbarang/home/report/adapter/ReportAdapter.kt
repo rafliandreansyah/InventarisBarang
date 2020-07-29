@@ -63,7 +63,7 @@ class ReportAdapter : ListAdapter<ReportItem, ReportAdapter.ReportViewHolder>(DI
         // Convert timestamp to local time
         val calendar = Calendar.getInstance()
         val tz = calendar.timeZone
-        val sdf = SimpleDateFormat("dd-MM-yyyy")
+        val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
         sdf.timeZone = tz
         val startSecondDate = Date(date * 1000)
         return sdf.format(startSecondDate)

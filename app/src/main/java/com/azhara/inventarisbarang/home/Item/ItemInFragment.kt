@@ -1,10 +1,11 @@
 package com.azhara.inventarisbarang.home.Item
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -32,6 +33,7 @@ class ItemInFragment : Fragment(), View.OnClickListener {
         itemViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[ItemViewModel::class.java]
         setDataNameProduct()
         reportState()
+        errorMessage()
     }
 
     private fun setDataNameProduct(){
@@ -110,6 +112,21 @@ class ItemInFragment : Fragment(), View.OnClickListener {
             loading_item_in.visibility = View.VISIBLE
         }else{
             loading_item_in.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun errorMessage(){
+        if (itemViewModel.errorMessageItemIn != null){
+            view?.let {
+                context?.let { it1 -> ContextCompat.getColor(it1, R.color.colorGreen) }?.let { it2 ->
+                    Snackbar.make(it, "${itemViewModel.errorMessageItemIn}", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Ok") {
+                        }
+                        .setBackgroundTint(it2)
+                        .setActionTextColor(ContextCompat.getColor(context!!, R.color.colorWhite))
+                        .show()
+                }
+            }
         }
     }
 

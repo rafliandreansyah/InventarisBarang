@@ -17,6 +17,9 @@ class ItemViewModel : ViewModel(){
     private val tag = ItemViewModel::class.java.simpleName
     private val productData = MutableLiveData<List<Product>>()
     private val reportState = MutableLiveData<Boolean>()
+    var errorMessage: String? = null
+    var errorMessageItemIn: String? = null
+    var errorMessageItemOut: String? = null
 
     fun getDataProduct(){
         val productDb = db.collection("product")
@@ -24,6 +27,7 @@ class ItemViewModel : ViewModel(){
         productDb.addSnapshotListener { value, error ->
             if (error != null){
                 Log.e(tag, "Error load data product: ${error.message}")
+                errorMessage = "Error mengambil data product"
             }
 
             if (value != null){
@@ -59,6 +63,7 @@ class ItemViewModel : ViewModel(){
             }else{
                 reportState.postValue(false)
                 Log.e(tag, "Error update item in: ${task.exception?.message}")
+                errorMessageItemIn = "Error update produk masuk"
             }
         }
     }
@@ -78,6 +83,7 @@ class ItemViewModel : ViewModel(){
             }else{
                 reportState.postValue(false)
                 Log.e(tag, "Error update item out: ${task.exception?.message}")
+                errorMessageItemOut = "Error update produk keluar."
             }
         }
     }

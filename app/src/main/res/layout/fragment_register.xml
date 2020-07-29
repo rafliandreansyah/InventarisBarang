@@ -24,12 +24,12 @@
                 android:layout_marginHorizontal="@dimen/dip_16"
                 android:layout_marginTop="@dimen/dip_40"
                 tools:ignore="UseCompoundDrawables">
-                
+
                 <ImageView
                     android:layout_width="200dp"
                     android:layout_height="180dp"
                     android:src="@drawable/illustration_register"
-                    android:contentDescription="@string/illustration_register"/>
+                    android:contentDescription="@string/illustration_register" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -38,8 +38,8 @@
                     android:textSize="20sp"
                     android:layout_marginStart="@dimen/dip_16"
                     android:layout_gravity="center"
-                    android:text="@string/registrasi_akun"/>
-                
+                    android:text="@string/registrasi_akun" />
+
             </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -167,20 +167,22 @@
                 android:layout_marginTop="@dimen/dip_30"
                 android:layout_marginHorizontal="@dimen/dip_20"
                 android:text="@string/daftar_sekarang"
-                style="@style/Button"/>
-            
+                style="@style/Button" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/dip_16">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="14sp"
                     android:text="@string/sudah_punya_akun"
-                    style="@style/TextRegularPrimary"/>
+                    style="@style/TextRegularPrimary" />
+
                 <TextView
                     android:id="@+id/tv_to_login"
                     android:layout_width="wrap_content"
@@ -189,7 +191,7 @@
                     android:layout_marginStart="@dimen/dip_8"
                     android:text="@string/login"
                     android:textColor="@color/colorAccent"
-                    style="@style/TextBoldAccent"/>
+                    style="@style/TextBoldAccent" />
             </LinearLayout>
 
         </LinearLayout>
@@ -200,6 +202,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
 </FrameLayout>

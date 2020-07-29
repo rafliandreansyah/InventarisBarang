@@ -23,6 +23,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 tools:ignore="UseCompoundDrawables,UselessParent">
+
                 <ImageView
                     android:id="@+id/back_button_item"
                     android:layout_width="wrap_content"
@@ -37,7 +38,7 @@
                     android:text="@string/barang"
                     android:layout_marginStart="@dimen/dip_16"
                     style="@style/TextRegularPrimary"
-                    android:textSize="22sp"/>
+                    android:textSize="22sp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -46,7 +47,7 @@
             android:id="@+id/rv_item"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:listitem="@layout/list_item_product"/>
+            tools:listitem="@layout/list_item_product" />
 
     </LinearLayout>
 
@@ -57,6 +58,7 @@
         android:layout_gravity="center"
         android:visibility="invisible"
         android:orientation="vertical">
+
         <ImageView
             android:layout_width="200dp"
             android:layout_height="150dp"

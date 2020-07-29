@@ -17,6 +17,9 @@ class ProductViewModel: ViewModel(){
     private val productData = MutableLiveData<List<Product>>()
     private val productState = MutableLiveData<Boolean>()
     private val editProductState = MutableLiveData<Boolean>()
+    var errorMessage: String? = null
+    var errorMessageEdit: String? = null
+    var errorMessageAdd: String? = null
 
     fun getDataProduct(){
         val productDb = db.collection("product")
@@ -24,6 +27,7 @@ class ProductViewModel: ViewModel(){
         productDb.addSnapshotListener { value, error ->
             if (error != null){
                 Log.e(tag, "Error load data product: ${error.message}")
+                errorMessage = "${error.message}"
             }
 
             if (value != null){
@@ -54,6 +58,7 @@ class ProductViewModel: ViewModel(){
             }else{
                 Log.e(tag, "Error add product: ${task.exception?.message}")
                 productState.postValue(false)
+                errorMessageAdd = "${task.exception?.message}"
             }
         }
     }
@@ -68,6 +73,7 @@ class ProductViewModel: ViewModel(){
             }else{
                 productState.postValue(false)
                 Log.e(tag, "Error add product to database ${task.exception?.message}")
+                errorMessageAdd = "Error add product to database"
             }
         }
     }
@@ -84,6 +90,7 @@ class ProductViewModel: ViewModel(){
                         tag,
                         "Error upload image ${task.exception?.message}"
                     )
+                    errorMessageAdd = "Error upload image"
                 }
                 imgStorage.downloadUrl
             }.addOnCompleteListener { task ->
@@ -92,10 +99,12 @@ class ProductViewModel: ViewModel(){
                     addProductDb(productName, totalItem, urlImg.toString())
                 } else {
                     Log.d(tag, "Error upload image ${task.exception?.message}")
+                    errorMessageAdd = "Error upload image"
                 }
             }
         }?.addOnFailureListener {
             Log.e(tag, "Error upload image ${it.message}")
+            errorMessageAdd = "Error upload image"
         }
     }
 
@@ -113,6 +122,7 @@ class ProductViewModel: ViewModel(){
             }else{
                 Log.e(tag, "Error edit product: ${task.exception?.message}")
                 editProductState.postValue(false)
+                errorMessageEdit = "Error edit product"
             }
         }
     }
@@ -132,6 +142,7 @@ class ProductViewModel: ViewModel(){
             }else{
                 Log.e(tag, "Error edit product: ${task.exception?.message}")
                 editProductState.postValue(false)
+                errorMessageEdit = "Error edit product"
             }
         }
     }
@@ -148,6 +159,7 @@ class ProductViewModel: ViewModel(){
                         tag,
                         "Error upload photo edit product: ${task.exception?.message}"
                     )
+                    errorMessageEdit = "Error upload photo edit product"
                 }
                 imgStorage.downloadUrl
             }.addOnCompleteListener { task ->
@@ -155,11 +167,17 @@ class ProductViewModel: ViewModel(){
                     val urlImg = task.result
                     editProductDb(name, totalItem, productId, urlImg.toString())
                 } else {
-                    Log.d(tag, "Error upload photo edit product: ${task.exception?.message}")
+                    Log.e(tag, "Error upload photo edit product: ${task.exception?.message}")
+                    errorMessageEdit = "Error upload photo edit product"
                 }
             }
+        }?.addOnFailureListener { e ->
+            Log.e(tag, "Error upload photo edit product: ${e.message}")
+            errorMessageEdit = "Error upload photo edit product"
         }
     }
 
     fun editProductState(): LiveData<Boolean> = editProductState
+
+
 }

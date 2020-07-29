@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 tools:text="Lemon"
-                style="@style/TextRegularPrimary"/>
+                style="@style/TextRegularPrimary" />
 
             <TextView
                 android:id="@+id/tv_item_report_product_in_out"
@@ -55,7 +55,7 @@
                 tools:text="Keluar: 12 Items"
                 android:layout_marginTop="@dimen/dip_8"
                 android:textColor="@color/colorRed"
-                style="@style/TextRegularPrimary"/>
+                style="@style/TextRegularPrimary" />
 
             <TextView
                 android:id="@+id/tv_item_report_product_remaining"
@@ -64,7 +64,7 @@
                 android:textSize="12sp"
                 tools:text="Sisa: 60 Items"
                 android:layout_marginTop="@dimen/dip_8"
-                style="@style/TextRegularSecondary"/>
+                style="@style/TextRegularSecondary" />
         </LinearLayout>
 
         <TextView
@@ -74,7 +74,7 @@
             tools:text="20-11-2020"
             android:textSize="12sp"
             android:layout_marginStart="@dimen/dip_8"
-            style="@style/TextRegularSecondary"/>
+            style="@style/TextRegularSecondary" />
 
     </LinearLayout>
 

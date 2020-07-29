@@ -22,7 +22,7 @@
                 android:layout_width="250dp"
                 android:layout_height="200dp"
                 android:src="@drawable/illustration_check_email"
-                android:contentDescription="@string/illustration_check_email"/>
+                android:contentDescription="@string/illustration_check_email" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
                 android:textSize="24sp"
                 android:textAlignment="center"
                 style="@style/TextRegularPrimary"
-                android:layout_marginTop="@dimen/dip_25"/>
+                android:layout_marginTop="@dimen/dip_25" />
 
             <Button
                 android:id="@+id/btn_to_login_reset"

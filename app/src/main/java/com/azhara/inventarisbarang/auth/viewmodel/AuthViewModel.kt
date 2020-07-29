@@ -25,8 +25,24 @@ class AuthViewModel : ViewModel(){
                 loginState.postValue(true)
             }else{
                 Log.e(tag, "Error login: ${task.exception}")
-                loginMessage = "${task.exception?.message}"
                 loginState.postValue(false)
+                loginMessage = when (task.exception?.message) {
+                    "The email address is badly formatted." -> {
+                        "Format email salah!"
+                    }
+                    "There is no user record corresponding to this identifier. The user may have been deleted." -> {
+                        "Email tidak terdaftar!"
+                    }
+                    "The password is invalid or the user does not have a password." -> {
+                        "Password salah!"
+                    }
+                    "A network error (such as timeout, interrupted connection or unreachable host) has occurred." -> {
+                        "Terjadi kesalahan pada jaringan!"
+                    }
+                    else -> {
+                        task.exception?.message
+                    }
+                }
             }
         }
     }

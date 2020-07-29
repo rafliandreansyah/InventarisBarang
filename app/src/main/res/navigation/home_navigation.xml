@@ -24,7 +24,7 @@
             android:id="@+id/action_navigation_change_password_fragment_to_navigation_profile_fragment"
             app:destination="@id/navigation_profile_fragment"
             app:popUpTo="@id/navigation_dashboard_fragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/navigation_dashboard_fragment"
@@ -83,7 +83,7 @@
         <action
             android:id="@+id/action_navigation_edit_profile_fragment_to_navigation_profile_fragment"
             app:destination="@id/navigation_profile_fragment"
-            app:popUpTo="@id/navigation_profile_fragment" />
+            app:popUpTo="@id/navigation_dashboard_fragment" />
         <argument
             android:name="position"
             app:argType="string"

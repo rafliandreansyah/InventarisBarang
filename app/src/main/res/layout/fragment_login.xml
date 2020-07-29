@@ -28,13 +28,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom">
+
                     <TextView
                         android:id="@+id/tv_selamat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="26sp"
                         android:text="@string/selamat"
-                        style="@style/TextRegularPrimary"/>
+                        style="@style/TextRegularPrimary" />
+
                     <TextView
                         android:id="@+id/tv_datang"
                         android:layout_width="wrap_content"
@@ -78,8 +80,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textEmailAddress"
-                        android:lines="1"
-                        />
+                        android:lines="1" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -98,7 +99,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
-                        android:lines="1"/>
+                        android:lines="1" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -113,14 +114,14 @@
                 style="@style/TextLightPrimary"
                 android:layout_marginTop="@dimen/dip_8"
                 android:layout_gravity="end"
-                android:layout_marginEnd="@dimen/dip_20"/>
+                android:layout_marginEnd="@dimen/dip_20" />
 
             <Button
                 android:id="@+id/btn_login"
                 android:layout_marginTop="@dimen/dip_40"
                 android:layout_marginHorizontal="@dimen/dip_20"
                 android:text="@string/login"
-                style="@style/Button"/>
+                style="@style/Button" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -136,7 +137,7 @@
                     android:layout_height="1dp"
                     android:layout_weight="3"
                     android:background="@color/colorTextSecondaryLight"
-                    android:layout_marginEnd="@dimen/dip_20"/>
+                    android:layout_marginEnd="@dimen/dip_20" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -145,14 +146,14 @@
                     android:textAlignment="center"
                     android:layout_weight="1"
                     style="@style/TextRegularSecondary"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_weight="3"
                     android:background="@color/colorTextSecondaryLight"
-                    android:layout_marginStart="@dimen/dip_20"/>
+                    android:layout_marginStart="@dimen/dip_20" />
             </LinearLayout>
 
             <Button
@@ -162,7 +163,7 @@
                 android:text="@string/daftar"
                 android:backgroundTint="@color/colorAccent"
                 android:layout_marginHorizontal="@dimen/dip_20"
-                style="@style/Button"/>
+                style="@style/Button" />
         </LinearLayout>
     </ScrollView>
 
@@ -171,5 +172,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 </FrameLayout>

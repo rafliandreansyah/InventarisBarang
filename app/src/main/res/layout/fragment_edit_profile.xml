@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 tools:ignore="UseCompoundDrawables,UselessParent">
+
                 <ImageView
                     android:id="@+id/back_button_edit_profile"
                     android:layout_width="wrap_content"
@@ -39,7 +40,7 @@
                     android:text="@string/edit_profil"
                     android:layout_marginStart="@dimen/dip_16"
                     style="@style/TextRegularPrimary"
-                    android:textSize="22sp"/>
+                    android:textSize="22sp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -84,11 +85,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:backgroundTint="@color/colorAccent"
                         android:contentDescription="@string/btn_add_foto"
                         app:fabSize="mini"
-                        android:backgroundTint="@color/colorAccent"
-                        app:tint="@color/colorWhite"
-                        app:srcCompat="@drawable/ic_add"/>
+                        app:srcCompat="@drawable/ic_add"
+                        app:tint="@color/colorWhite" />
 
                 </FrameLayout>
 
@@ -99,7 +100,7 @@
                     android:textSize="12sp"
                     style="@style/TextRegularSecondary"
                     tools:text="riojohn@gmail.com"
-                    android:layout_marginTop="@dimen/dip_8"/>
+                    android:layout_marginTop="@dimen/dip_8" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/input_layout_edit_name"
@@ -166,7 +167,7 @@
                     android:layout_marginTop="@dimen/dip_40"
                     android:layout_marginHorizontal="@dimen/dip_20"
                     android:text="@string/edit"
-                    style="@style/Button"/>
+                    style="@style/Button" />
 
             </LinearLayout>
 
@@ -177,7 +178,7 @@
     <ProgressBar
         android:id="@+id/loading_edit_profile"
         android:layout_width="wrap_content"
-        android:layout_height="23dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:visibility="invisible" />
 

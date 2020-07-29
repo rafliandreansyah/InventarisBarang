@@ -1,10 +1,10 @@
 package com.azhara.inventarisbarang.home.report
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,7 +12,6 @@ import com.azhara.inventarisbarang.R
 import com.azhara.inventarisbarang.entity.ReportItem
 import com.azhara.inventarisbarang.home.report.adapter.ReportAdapter
 import com.azhara.inventarisbarang.home.report.viewmodel.ReportViewModel
-import kotlinx.android.synthetic.main.fragment_product.*
 import kotlinx.android.synthetic.main.fragment_report.*
 
 class ReportFragment : Fragment() {
@@ -33,6 +32,7 @@ class ReportFragment : Fragment() {
         reportViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[ReportViewModel::class.java]
         reportAdapter = ReportAdapter()
         getDataReport()
+        onBackPressed()
     }
 
     private fun getDataReport(){
@@ -73,6 +73,12 @@ class ReportFragment : Fragment() {
             loading_report.visibility = View.VISIBLE
         }else{
             loading_report.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun onBackPressed(){
+        back_button_report.setOnClickListener {
+            activity?.onBackPressed()
         }
     }
 }

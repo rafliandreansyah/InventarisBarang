@@ -1,18 +1,17 @@
 package com.azhara.inventarisbarang.auth.resetpassword
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.azhara.inventarisbarang.R
 import com.azhara.inventarisbarang.auth.viewmodel.AuthViewModel
 import es.dmoral.toasty.Toasty
-import kotlinx.android.synthetic.main.fragment_login.*
 import kotlinx.android.synthetic.main.fragment_reset.*
 
 class ResetFragment : Fragment() {

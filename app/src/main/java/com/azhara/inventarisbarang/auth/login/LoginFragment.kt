@@ -2,11 +2,10 @@ package com.azhara.inventarisbarang.auth.login
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -15,7 +14,6 @@ import com.azhara.inventarisbarang.auth.viewmodel.AuthViewModel
 import com.azhara.inventarisbarang.home.HomeActivity
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_login.*
 
 class LoginFragment : Fragment(), View.OnClickListener {
@@ -108,8 +106,14 @@ class LoginFragment : Fragment(), View.OnClickListener {
     private fun loading(state: Boolean){
         if (state){
             loading_login.visibility = View.VISIBLE
+            tv_forgot_password.isEnabled = false
+            btn_login.isEnabled = false
+            btn_to_register.isEnabled = false
         }else{
             loading_login.visibility = View.INVISIBLE
+            tv_forgot_password.isEnabled = true
+            btn_login.isEnabled = true
+            btn_to_register.isEnabled = true
         }
     }
 

@@ -1,7 +1,7 @@
 package com.azhara.inventarisbarang.home
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.azhara.inventarisbarang.R
 
 class HomeActivity : AppCompatActivity() {

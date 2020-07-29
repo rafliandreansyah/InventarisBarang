@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="?android:attr/actionBarSize"
@@ -23,6 +24,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 tools:ignore="UseCompoundDrawables,UselessParent">
+
                 <ImageView
                     android:id="@+id/back_button"
                     android:layout_width="wrap_content"
@@ -37,7 +39,7 @@
                     android:text="@string/profile"
                     android:layout_marginStart="@dimen/dip_16"
                     style="@style/TextRegularPrimary"
-                    android:textSize="22sp"/>
+                    android:textSize="22sp" />
             </LinearLayout>
 
         </LinearLayout>
@@ -93,7 +95,7 @@
                             tools:text="Admin Gundang"
                             android:layout_centerHorizontal="true"
                             style="@style/TextRegularSecondary"
-                            android:layout_marginTop="@dimen/dip_8"/>
+                            android:layout_marginTop="@dimen/dip_8" />
 
 
                     </RelativeLayout>
@@ -111,7 +113,8 @@
                             android:layout_height="wrap_content"
                             android:textSize="16sp"
                             style="@style/TextRegularPrimary"
-                            tools:text="Johnny Rio"/>
+                            tools:text="Johnny Rio" />
+
                         <TextView
                             android:id="@+id/tv_email_profile"
                             android:layout_width="wrap_content"
@@ -119,7 +122,7 @@
                             android:textSize="12sp"
                             style="@style/TextRegularSecondary"
                             tools:text="riojohn@gmail.com"
-                            android:layout_marginTop="@dimen/dip_4"/>
+                            android:layout_marginTop="@dimen/dip_4" />
 
                         <TextView
                             android:id="@+id/tv_phone_profile"
@@ -128,7 +131,7 @@
                             android:textSize="12sp"
                             style="@style/TextRegularSecondary"
                             tools:text="081232720821"
-                            android:layout_marginTop="@dimen/dip_8"/>
+                            android:layout_marginTop="@dimen/dip_8" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -137,14 +140,14 @@
                     android:layout_height="1dp"
                     android:background="@color/colorDivider"
                     android:layout_marginTop="@dimen/dip_8"
-                    android:layout_marginHorizontal="@dimen/dip_25"/>
+                    android:layout_marginHorizontal="@dimen/dip_25" />
 
                 <Button
                     android:id="@+id/btn_to_edit_profile"
                     android:layout_marginTop="@dimen/dip_40"
                     android:layout_marginHorizontal="@dimen/dip_20"
                     android:text="@string/edit_profil"
-                    style="@style/Button"/>
+                    style="@style/Button" />
 
                 <Button
                     android:id="@+id/btn_to_change_password"
@@ -154,7 +157,7 @@
                     android:layout_marginVertical="@dimen/dip_8"
                     android:backgroundTint="@color/colorAccent"
                     android:layout_marginHorizontal="@dimen/dip_20"
-                    style="@style/Button"/>
+                    style="@style/Button" />
 
                 <Button
                     android:id="@+id/btn_logout"
@@ -167,8 +170,7 @@
                     android:textSize="12sp"
                     android:textAllCaps="false"
                     style="?attr/materialButtonOutlinedStyle"
-                    app:strokeColor="@color/colorRed"
-                    />
+                    app:strokeColor="@color/colorRed" />
             </LinearLayout>
 
         </ScrollView>
@@ -179,6 +181,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:visibility="invisible"/>
+        android:visibility="invisible" />
 
 </FrameLayout>

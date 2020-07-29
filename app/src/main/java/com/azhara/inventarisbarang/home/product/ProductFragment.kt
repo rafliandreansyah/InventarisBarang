@@ -2,12 +2,11 @@ package com.azhara.inventarisbarang.home.product
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.graphics.toColorInt
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -43,6 +42,7 @@ class ProductFragment : Fragment(), View.OnClickListener {
         getDataProduct()
         statusMessage()
         onItemOptionClicked()
+        errorMessage()
     }
 
     private fun getDataProduct(){
@@ -54,7 +54,6 @@ class ProductFragment : Fragment(), View.OnClickListener {
                 loading(false)
                 emptyState(false)
                 setDataItem(data)
-                Log.d("data", "$data")
             }else{
                 loading(false)
                 emptyState(true)
@@ -104,6 +103,19 @@ class ProductFragment : Fragment(), View.OnClickListener {
         if (message != null){
             view?.let {
                 Snackbar.make(it, "$message", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("Ok") {
+                    }
+                    .setBackgroundTint(resources.getColor(R.color.colorGreen))
+                    .setActionTextColor(resources.getColor(R.color.colorWhite))
+                    .show()
+            }
+        }
+    }
+
+    private fun errorMessage(){
+        if (productViewModel.errorMessage != null){
+            view?.let {
+                Snackbar.make(it, "Terjadi kesalahan!", Snackbar.LENGTH_INDEFINITE)
                     .setAction("Ok") {
                     }
                     .setBackgroundTint(resources.getColor(R.color.colorGreen))

@@ -9,11 +9,10 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -22,7 +21,6 @@ import com.azhara.inventarisbarang.home.product.viewmodel.ProductViewModel
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_add_product.*
-import kotlinx.android.synthetic.main.fragment_edit_profile.*
 import java.io.ByteArrayOutputStream
 
 class AddProductFragment : Fragment(), View.OnClickListener {
@@ -57,6 +55,7 @@ class AddProductFragment : Fragment(), View.OnClickListener {
         productViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[ProductViewModel::class.java]
 
         checkAddProductState()
+        errorMessage()
     }
 
     private fun addProduct(){
@@ -193,6 +192,19 @@ class AddProductFragment : Fragment(), View.OnClickListener {
             loading_add_product.visibility = View.VISIBLE
         }else{
             loading_add_product.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun errorMessage(){
+        if (productViewModel.errorMessageAdd != null){
+            view?.let {
+                Snackbar.make(it, "${productViewModel.errorMessageAdd}", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("Ok") {
+                    }
+                    .setBackgroundTint(resources.getColor(R.color.colorGreen))
+                    .setActionTextColor(resources.getColor(R.color.colorWhite))
+                    .show()
+            }
         }
     }
 

@@ -9,10 +9,10 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -129,8 +129,14 @@ class EditProfileFragment : Fragment(), View.OnClickListener {
 
     private fun loading(state: Boolean){
         if (state){
+            fab_choose_pic_edit_product_item.isEnabled = false
+            btn_edit_profile.isEnabled = false
+            back_button_edit_profile.isEnabled = false
             loading_edit_profile.visibility = View.VISIBLE
         }else{
+            fab_choose_pic_edit_product_item.isEnabled = true
+            btn_edit_profile.isEnabled = true
+            back_button_edit_profile.isEnabled = true
             loading_edit_profile.visibility = View.INVISIBLE
         }
     }

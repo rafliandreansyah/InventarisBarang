@@ -21,7 +21,7 @@
             app:shape_roundRect_bottomRightRadius="4dp"
             app:shape_roundRect_topLeftRadius="4dp"
             app:shape_roundRect_topRightRadius="4dp">
-            
+
             <ImageView
                 android:id="@+id/img_product_item"
                 android:layout_width="match_parent"
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 tools:text="Lemon"
                 style="@style/TextRegularPrimary"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tv_total_product_item"
@@ -54,9 +54,10 @@
                 tools:text="50 items"
                 style="@style/TextRegularSecondary"
                 android:textSize="12sp"
-                android:layout_marginTop="@dimen/dip_8"/>
+                android:layout_marginTop="@dimen/dip_8" />
 
         </LinearLayout>
+
         <ImageView
             android:id="@+id/btn_option_item"
             android:layout_width="wrap_content"

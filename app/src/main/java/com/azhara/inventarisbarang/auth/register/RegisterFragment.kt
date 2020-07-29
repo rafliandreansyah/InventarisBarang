@@ -1,11 +1,11 @@
 package com.azhara.inventarisbarang.auth.register
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -132,9 +132,13 @@ class RegisterFragment : Fragment(), View.OnClickListener {
 
     private fun loading(state: Boolean){
         if (state){
+            btn_register.isEnabled = false
+            tv_to_login.isEnabled = false
             loading_register.visibility = View.VISIBLE
         }else{
             loading_register.visibility = View.INVISIBLE
+            btn_register.isEnabled = true
+            tv_to_login.isEnabled = true
         }
     }
 

@@ -1,17 +1,17 @@
 package com.azhara.inventarisbarang.home.Item
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.azhara.inventarisbarang.R
 import com.azhara.inventarisbarang.home.Item.viewmodel.ItemViewModel
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.fragment_item_in.*
 import kotlinx.android.synthetic.main.fragment_item_out.*
 
 class ItemOutFragment : Fragment(), View.OnClickListener {
@@ -33,6 +33,7 @@ class ItemOutFragment : Fragment(), View.OnClickListener {
         itemViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[ItemViewModel::class.java]
         setDataNameProduct()
         reportState()
+        errorMessage()
     }
 
     private fun setDataNameProduct(){
@@ -112,6 +113,21 @@ class ItemOutFragment : Fragment(), View.OnClickListener {
             loading_item_out.visibility = View.VISIBLE
         }else{
             loading_item_out.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun errorMessage(){
+        if (itemViewModel.errorMessageItemOut != null){
+            view?.let {
+                context?.let { it1 -> ContextCompat.getColor(it1, R.color.colorGreen) }?.let { it2 ->
+                    Snackbar.make(it, "${itemViewModel.errorMessageItemOut}", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Ok") {
+                        }
+                        .setBackgroundTint(it2)
+                        .setActionTextColor(ContextCompat.getColor(context!!, R.color.colorWhite))
+                        .show()
+                }
+            }
         }
     }
 }

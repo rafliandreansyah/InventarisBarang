@@ -1,10 +1,10 @@
 package com.azhara.inventarisbarang.home.profile
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -12,7 +12,6 @@ import com.azhara.inventarisbarang.R
 import com.azhara.inventarisbarang.home.profile.viewmodel.ProfileViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_change_password.*
-import kotlinx.android.synthetic.main.fragment_login.*
 
 class ChangePasswordFragment : Fragment() {
 
@@ -104,8 +103,12 @@ class ChangePasswordFragment : Fragment() {
 
     private fun loading(state: Boolean){
         if (state){
+            btn_change_password.isEnabled = false
+            back_button.isEnabled = false
             loading_change_password.visibility = View.VISIBLE
         }else{
+            btn_change_password.isEnabled = true
+            back_button.isEnabled = true
             loading_change_password.visibility = View.INVISIBLE
         }
     }

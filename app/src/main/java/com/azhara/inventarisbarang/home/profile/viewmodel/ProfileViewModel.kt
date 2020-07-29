@@ -4,10 +4,10 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.azhara.inventarisbarang.entity.User
 import com.google.firebase.auth.EmailAuthProvider
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 
 class ProfileViewModel : ViewModel(){
@@ -60,15 +60,19 @@ class ProfileViewModel : ViewModel(){
 
             }?.addOnFailureListener { e ->
                 Log.e(tag, "email: ${user.email}, changePassword, exception: ${e.message}")
-                if (e.message == "The password is invalid or the user does not have a password.") {
-                    changePasswordMsgError = "Password lama salah"
-                    changePasswordState.postValue(false)
-                } else if (e.message == "A network error (such as timeout, interrupted connection or unreachable host) has occurred.") {
-                    changePasswordMsgError = "Kesalahan jaringan, silahkan cek jaringan anda!"
-                    changePasswordState.postValue(false)
-                } else {
-                    changePasswordMsgError = e.message
-                    changePasswordState.postValue(false)
+                when (e.message) {
+                    "The password is invalid or the user does not have a password." -> {
+                        changePasswordMsgError = "Password lama salah"
+                        changePasswordState.postValue(false)
+                    }
+                    "A network error (such as timeout, interrupted connection or unreachable host) has occurred." -> {
+                        changePasswordMsgError = "Kesalahan jaringan, silahkan cek jaringan anda!"
+                        changePasswordState.postValue(false)
+                    }
+                    else -> {
+                        changePasswordMsgError = e.message
+                        changePasswordState.postValue(false)
+                    }
                 }
             }
         }
