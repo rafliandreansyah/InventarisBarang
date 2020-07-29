@@ -93,13 +93,13 @@
             android:textSize="12sp"
             android:layout_gravity="center_horizontal"
             style="@style/TextRegularSecondary"
-            android:text="@string/data_produk_kosong_silahkan_tambah_produk" />
+            android:text="@string/empty_report" />
     </LinearLayout>
 
     <ProgressBar
         android:id="@+id/loading_product"
         android:layout_width="wrap_content"
-        android:layout_height="23dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:visibility="invisible" />
 

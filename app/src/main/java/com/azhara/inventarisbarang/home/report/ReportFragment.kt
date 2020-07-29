@@ -5,30 +5,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.azhara.inventarisbarang.R
+import com.azhara.inventarisbarang.entity.ReportItem
+import com.azhara.inventarisbarang.home.report.adapter.ReportAdapter
+import com.azhara.inventarisbarang.home.report.viewmodel.ReportViewModel
+import kotlinx.android.synthetic.main.fragment_product.*
+import kotlinx.android.synthetic.main.fragment_report.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ReportFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ReportFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var reportViewModel: ReportViewModel
+    private lateinit var reportAdapter: ReportAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,23 +28,51 @@ class ReportFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_report, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ReportFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ReportFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        reportViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[ReportViewModel::class.java]
+        reportAdapter = ReportAdapter()
+        getDataReport()
+    }
+
+    private fun getDataReport(){
+        loading(true)
+        reportViewModel.getDataReport()
+
+        reportViewModel.reportData().observe(viewLifecycleOwner, Observer { data ->
+            if (data != null){
+                emptyState(false)
+                loading(false)
+                setDataReport(data)
+            }else{
+                loading(false)
+                emptyState(true)
             }
+        })
+    }
+
+    private fun setDataReport(data: List<ReportItem>) {
+        with(rv_report){
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(context)
+            adapter = reportAdapter
+        }
+        reportAdapter.submitList(data)
+    }
+
+    private fun emptyState(state: Boolean){
+        if(state){
+            layout_empty_report.visibility = View.VISIBLE
+        }else{
+            layout_empty_report.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun loading(state: Boolean){
+        if (state){
+            loading_report.visibility = View.VISIBLE
+        }else{
+            loading_report.visibility = View.INVISIBLE
+        }
     }
 }

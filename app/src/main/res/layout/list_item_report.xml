@@ -4,10 +4,9 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginVertical="8dp"
-    android:layout_marginHorizontal="@dimen/dip_20"
-    app:cardCornerRadius="@dimen/dip_4"
-    android:elevation="@dimen/dip_4">
+    android:layout_marginVertical="@dimen/dip_4"
+    android:layout_marginHorizontal="10dp"
+    app:cardCornerRadius="@dimen/dip_4">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +17,6 @@
         <com.github.florent37.shapeofview.shapes.RoundRectView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:elevation="4dp"
             app:shape_roundRect_bottomLeftRadius="4dp"
             app:shape_roundRect_bottomRightRadius="4dp"
             app:shape_roundRect_topLeftRadius="4dp"
@@ -28,7 +26,8 @@
                 android:id="@+id/img_item_report"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:src="@color/colorAccent"
+                android:src="@drawable/empty_image_product"
+                android:scaleType="centerCrop"
                 android:contentDescription="@string/image_item_report" />
 
         </com.github.florent37.shapeofview.shapes.RoundRectView>

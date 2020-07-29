@@ -103,6 +103,8 @@
     <string name="illustrasi_data_kosong">illustrasi data kosong</string>
     <string name="oops">Oops...</string>
     <string name="data_produk_kosong_silahkan_tambah_produk">Data produk kosong. Silahkan tambah produk.</string>
+    <string name="empty_report">Data report kosong.</string>
+
 
     <string name="delete">Hapus</string>
     <string name="cancel">Tidak</string>

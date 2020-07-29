@@ -4,9 +4,8 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginHorizontal="@dimen/dip_20"
+    android:layout_marginHorizontal="@dimen/dip_16"
     app:cardCornerRadius="@dimen/dip_4"
-    android:elevation="@dimen/dip_4"
     android:layout_marginVertical="@dimen/dip_4">
 
     <LinearLayout
