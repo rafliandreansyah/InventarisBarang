@@ -28,6 +28,7 @@ class ItemInFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         btn_item_in.setOnClickListener(this)
+        back_button_item_in.setOnClickListener(this)
         itemViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[ItemViewModel::class.java]
         setDataNameProduct()
         reportState()
@@ -79,12 +80,12 @@ class ItemInFragment : Fragment(), View.OnClickListener {
                 loading(false)
                 val itemInSuccess = ItemInFragmentDirections
                     .actionNavigationItemInFragmentToNavigationItemFragment()
-                itemInSuccess.message = getString(R.string.product_item_report_message)
+                itemInSuccess.message = getString(R.string.product_item_in_report_message)
                 view?.findNavController()?.navigate(itemInSuccess)
             }else{
                 loading(false)
                 view?.let {
-                    Snackbar.make(it, "Gagal memasukan data item!", Snackbar.LENGTH_INDEFINITE)
+                    Snackbar.make(it, "Gagal memasukan data item masuk!", Snackbar.LENGTH_INDEFINITE)
                         .setAction("Coba lagi"){}
                         .setBackgroundTint(resources.getColor(R.color.colorRed))
                         .show()
@@ -97,6 +98,9 @@ class ItemInFragment : Fragment(), View.OnClickListener {
         when(v?.id){
             R.id.btn_item_in -> {
                 itemInCheck()
+            }
+            R.id.back_button_item_in -> {
+                activity?.onBackPressed()
             }
         }
     }

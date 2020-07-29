@@ -181,6 +181,11 @@
             app:argType="string"
             app:nullable="true"
             android:defaultValue="productName" />
+        <argument
+            android:name="imgUrl"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="imgUrl" />
     </fragment>
     <fragment
         android:id="@+id/navigation_profile_fragment"

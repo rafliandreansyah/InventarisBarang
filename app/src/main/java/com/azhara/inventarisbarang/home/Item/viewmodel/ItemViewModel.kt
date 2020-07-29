@@ -63,6 +63,25 @@ class ItemViewModel : ViewModel(){
         }
     }
 
+    fun itemOut(
+        productId: String?,
+        totalItem: Int?,
+        totalItemOut: Int?,
+        imgUrl: String?,
+        productName: String?
+    ){
+        val productDb = db.collection("product").document("$productId")
+
+        productDb.update("totalItem", totalItem).addOnCompleteListener { task ->
+            if (task.isSuccessful){
+                setReport(totalItemOut, 0, imgUrl, productName, totalItem)
+            }else{
+                reportState.postValue(false)
+                Log.e(tag, "Error update item out: ${task.exception?.message}")
+            }
+        }
+    }
+
     private fun setReport(
         totalItemUpdate: Int?,
         typeReport: Int?,

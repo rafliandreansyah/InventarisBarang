@@ -97,7 +97,8 @@
     <string name="edit_profile_message">Profil berhasil diedit</string>
     <string name="add_product_message">Produk berhasil ditambah</string>
     <string name="edit_product_message">Produk berhasil diedit</string>
-    <string name="product_item_report_message">Produk barang masuk berhasil dicatat</string>
+    <string name="product_item_in_report_message">Produk barang masuk berhasil dicatat</string>
+    <string name="product_item_out_report_message">Produk barang keluar berhasil dicatat</string>
 
     <string name="illustrasi_data_kosong">illustrasi data kosong</string>
     <string name="oops">Oops...</string>

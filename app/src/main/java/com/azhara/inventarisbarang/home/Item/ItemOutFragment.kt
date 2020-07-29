@@ -5,30 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.azhara.inventarisbarang.R
+import com.azhara.inventarisbarang.home.Item.viewmodel.ItemViewModel
+import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.fragment_item_in.*
+import kotlinx.android.synthetic.main.fragment_item_out.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class ItemOutFragment : Fragment(), View.OnClickListener {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ItemOutFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class ItemOutFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var itemViewModel: ItemViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,23 +26,92 @@ class ItemOutFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_item_out, container, false)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ItemOutFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ItemOutFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        btn_item_out.setOnClickListener(this)
+        back_button_item_out.setOnClickListener(this)
+        itemViewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory())[ItemViewModel::class.java]
+        setDataNameProduct()
+        reportState()
+    }
+
+    private fun setDataNameProduct(){
+        val productName = ItemOutFragmentArgs.fromBundle(arguments as Bundle).productName
+        tv_name_item_out.text = productName
+    }
+
+
+    private fun itemInCheck(){
+        input_layout_item_out.error = null
+        loading(true)
+        val itemIn = edt_total_item_out.text.toString().trim()
+
+        if (itemIn.isEmpty()){
+            loading(false)
+            input_layout_item_out.error = getString(R.string.item_out_empty)
+            return
+        }
+
+        if (itemIn.startsWith("0")){
+            loading(false)
+            input_layout_item_out.error = getString(R.string.item_number_error)
+            return
+        }
+
+        if (itemIn.isNotEmpty() && !itemIn.startsWith("0")){
+            updateTotalItemProduct(itemIn)
+        }
+
+    }
+
+    private fun updateTotalItemProduct(itemIn: String?) {
+        val productTotalItem = ItemOutFragmentArgs.fromBundle(arguments as Bundle).totalItem
+        val productId = ItemOutFragmentArgs.fromBundle(arguments as Bundle).productId
+        val imgUrl = ItemOutFragmentArgs.fromBundle(arguments as Bundle).imgUrl
+        val productName = ItemOutFragmentArgs.fromBundle(arguments as Bundle).productName
+        val totalItemNow = productTotalItem?.toInt()
+        val totalItemOut = itemIn?.toInt()
+
+        val totalItem = totalItemNow?.minus(totalItemOut!!)
+        itemViewModel.itemOut(productId, totalItem, totalItemOut, imgUrl, productName)
+    }
+
+    private fun reportState(){
+        itemViewModel.reportState().observe(viewLifecycleOwner, Observer { state ->
+            if (state == true){
+                loading(false)
+                val itemOutSuccess = ItemOutFragmentDirections
+                    .actionNavigationItemOutFragmentToNavigationItemFragment()
+                itemOutSuccess.message = getString(R.string.product_item_out_report_message)
+                view?.findNavController()?.navigate(itemOutSuccess)
+            }else{
+                loading(false)
+                view?.let {
+                    Snackbar.make(it, "Gagal memasukan data item keluar!", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Coba lagi"){}
+                        .setBackgroundTint(resources.getColor(R.color.colorRed))
+                        .show()
                 }
             }
+        })
+    }
+
+    override fun onClick(v: View?) {
+        when(v?.id){
+            R.id.btn_item_out -> {
+                itemInCheck()
+            }
+            R.id.back_button_item_out -> {
+                activity?.onBackPressed()
+            }
+        }
+    }
+
+    private fun loading(state: Boolean){
+        if (state){
+            loading_item_out.visibility = View.VISIBLE
+        }else{
+            loading_item_out.visibility = View.INVISIBLE
+        }
     }
 }

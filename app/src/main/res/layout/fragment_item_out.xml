@@ -90,7 +90,7 @@
                             style="@style/TextInputLayout.OutlineBox.CustomFont">
 
                             <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/edt_email_login"
+                                android:id="@+id/edt_total_item_out"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:inputType="text"
@@ -110,8 +110,13 @@
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
-
-
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/loading_item_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="invisible" />
 
 </FrameLayout>

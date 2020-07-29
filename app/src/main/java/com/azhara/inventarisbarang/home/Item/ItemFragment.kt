@@ -39,6 +39,13 @@ class ItemFragment : Fragment() {
         loadData()
         onItemOptionClicked()
         statusMessage()
+        backButton()
+    }
+
+    private fun backButton(){
+        back_button_item.setOnClickListener {
+            activity?.onBackPressed()
+        }
     }
 
     private fun loadData(){
@@ -94,6 +101,7 @@ class ItemFragment : Fragment() {
                     productOut.productId = product.productId
                     productOut.productName = product.productName
                     productOut.totalItem = product.totalItem.toString()
+                    productOut.imgUrl = product.imgUrl
                     view?.findNavController()?.navigate(productOut)
                 }
             }
