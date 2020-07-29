@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,7 +16,6 @@ import com.azhara.inventarisbarang.home.product.adapter.ProductAdapter
 import com.azhara.inventarisbarang.home.product.viewmodel.ProductViewModel
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
-import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.fragment_product.*
 
 class ProductFragment : Fragment(), View.OnClickListener {
@@ -138,7 +136,7 @@ class ProductFragment : Fragment(), View.OnClickListener {
         val items = arrayOf(getString(R.string.edit), getString(R.string.delete))
         MaterialAlertDialogBuilder(context)
             .setTitle(resources.getString(R.string.product_setting))
-            .setItems(items) { dialog, which ->
+            .setItems(items) { _, which ->
                 if (items[which] == getString(R.string.edit)){
                     val productData = ProductFragmentDirections
                         .actionNavigationProductFragmentToNavigationEditProductFragment()
@@ -150,22 +148,22 @@ class ProductFragment : Fragment(), View.OnClickListener {
                     }
                     view?.findNavController()?.navigate(productData)
                 }else{
-                    alertDialogDelete(product.productName)
+                    alertDialogDelete(product.productName, product.productId)
                 }
 
             }
             .show()
     }
 
-    private fun alertDialogDelete(productName: String?) {
+    private fun alertDialogDelete(productName: String?, productId: String?) {
         MaterialAlertDialogBuilder(context, R.style.AlertDialogTheme)
             .setTitle(resources.getString(R.string.delete_product))
             .setMessage("${resources.getString(R.string.delete_product_subtitle)} $productName?")
-            .setNegativeButton(resources.getString(R.string.cancel)) { dialog, which ->
+            .setNegativeButton(resources.getString(R.string.cancel)) { _, _ ->
                 // Respond to negative button press
             }
-            .setPositiveButton(resources.getString(R.string.delete)) { dialog, which ->
-                context?.let { Toasty.success(it, "Hapus", Toast.LENGTH_SHORT).show() }
+            .setPositiveButton(resources.getString(R.string.delete)) { _, _ ->
+                productViewModel.deleteProduct(productId)
             }
             .show()
     }

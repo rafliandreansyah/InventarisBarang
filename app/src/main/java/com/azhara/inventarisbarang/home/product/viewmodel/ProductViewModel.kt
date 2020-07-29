@@ -179,5 +179,15 @@ class ProductViewModel: ViewModel(){
 
     fun editProductState(): LiveData<Boolean> = editProductState
 
+    fun deleteProduct(productId: String?){
+        val productDb = db.collection("product").document("$productId")
 
+        productDb.delete().addOnCompleteListener { task ->
+            if (task.isSuccessful){
+                Log.d(tag, "Berhasil menghapus produk")
+            }else{
+                Log.e(tag, "Error delete product: ${task.exception?.message}")
+            }
+        }
+    }
 }
